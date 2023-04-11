@@ -1,9 +1,83 @@
-<mxfile host="app.diagrams.net" modified="2023-04-09T09:56:37.159Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" version="21.1.5" etag="VJnMks1QKvKcHRxGphKY" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-11T13:23:09.781Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="d5vPPWa6b-pqy_EwIzV7" version="21.1.5" type="github">
   <diagram name="Page-1" id="givzGE_alVX35675La9L">
-    <mxGraphModel>
+    <mxGraphModel dx="578" dy="580" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-1" value="Admin" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="220" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-2" value="Username" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-3" value="Password" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-5" value="Setup" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="90" width="140" height="120" as="geometry">
+            <mxRectangle x="400" y="50" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-6" value="Composant" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-5">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-7" value="Référence" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-5">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-8" value="Lien" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-5">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-11" value="Couleurs" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="350" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-12" value="Nom" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-11">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-18" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.021;entryY=0.2;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="BAgsuPGmCNC-1IEbp3Nt-2" target="BAgsuPGmCNC-1IEbp3Nt-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-23" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.987;exitY=1.028;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="BAgsuPGmCNC-1IEbp3Nt-3" target="BAgsuPGmCNC-1IEbp3Nt-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="430" as="sourcePoint" />
+            <mxPoint x="460" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-24" value="Live" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="400" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-25" value="Jour" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-24">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-26" value="Heure" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-24">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-27" value="Jeu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="BAgsuPGmCNC-1IEbp3Nt-24">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-28" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.26;exitY=1.078;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.627;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="BAgsuPGmCNC-1IEbp3Nt-3" target="BAgsuPGmCNC-1IEbp3Nt-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="450" as="sourcePoint" />
+            <mxPoint x="380" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-29" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="310" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-30" value="0..*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="380" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-31" value="1..*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="520" y="330" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-32" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="290" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-33" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="230" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BAgsuPGmCNC-1IEbp3Nt-34" value="1..*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="570" y="140" width="30" height="20" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

@@ -23,7 +23,8 @@ module.exports = {
                 rajdhani: ['Rajdhani, sans-serif'],
             },
             maxWidth: {
-                'screen-fhd': '1920px',
+                'screen-fhd': '120rem',
+                'screen-qhd': '160rem',
             },
             padding: {
                 '26': '6.5rem',

@@ -13,6 +13,7 @@
         {% endblock %}
     </head>
     <body class="flex flex-col min-h-[100dvh] bg-mirage-500 max-w-screen-qhd mx-auto">
+        {% include 'public/_partials/navbar.html.twig' %}
         {% block body %}{% endblock %}
         {% include 'public/_partials/footer.html.twig' %}
     </body>

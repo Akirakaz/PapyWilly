@@ -17,3 +17,5 @@
 /node_modules/
 /public/build/
 ###< pentatrion/vite-bundle ###
+/Makefile
+/package-lock.json

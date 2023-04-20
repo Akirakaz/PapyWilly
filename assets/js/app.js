@@ -5,3 +5,4 @@ import "../css/app.css";
 
 /* JS */
 import "./alpinejs";
+import "./modalVideo";

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="{{ asset('/assets/img/favicon.svg') }}" type="image/svg+xml">
+        <link rel="icon" href="{{ asset('assets/img/favicon.svg') }}" type="image/svg+xml">
         {% block stylesheets %}
             {{ vite_entry_link_tags('app') }}
         {% endblock %}

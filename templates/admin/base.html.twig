@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('assets/img/favicon.svg') }}" type="image/svg+xml">
+        {% block stylesheets %}
+            {{ vite_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ vite_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="flex flex-col min-h-[100dvh] bg-slate-300 max-w-screen-qhd lg:ml-[300px]">
+        {% include 'admin/_partials/navbar.html.twig' %}
+        {% block body %}{% endblock %}
+        {% include 'admin/_partials/footer.html.twig' %}
+    </body>
+</html>

@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Url;
 
 class SocialNetworkType extends AbstractType
@@ -34,6 +35,12 @@ class SocialNetworkType extends AbstractType
                 'label' => "Texte d'affichage",
                 'attr' => [
                     'placeholder' => 'Alt',
+                ],
+                'constraints' => [
+                    new Length([
+                        'max' => 255,
+                        'maxMessage' => "Le texte d'affichage ne peut pas dépasser {{ limit }} caractères",
+                    ])
                 ]
             ])
             ->add('url', TextType::class, [
@@ -46,6 +53,10 @@ class SocialNetworkType extends AbstractType
                     new Url([
                         'message' => "L'url n'est pas valide",
                     ]),
+                    new Length([
+                        'max' => 255,
+                        'maxMessage' => "L'url ne peut pas dépasser {{ limit }} caractères",
+                    ])
                 ],
             ]);
     }

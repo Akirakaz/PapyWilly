@@ -1,0 +1,71 @@
+
+{% extends 'admin/base.html.twig' %}
+
+{% set title = "Gestion du hardware" %}
+
+{% block pageTitle %}Admin - {{ title }}{% endblock %}
+
+{% block body %}
+    <main class="mx-auto w-full max-w-7xl flex-grow px-4 mt-20">
+
+        <h1 class="my-8 text-3xl">{{ title }}</h1>
+
+        <div class="flex justify-end">
+            <a class="rounded bg-slate-200 px-4 py-2 hover:bg-slate-300" href="{{ path('app_admin_hardware_new') }}">Ajouter un hardware</a>
+        </div>
+
+        <div class="overflow-auto">
+            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
+                <thead class="bg-slate-300">
+                <tr>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">ID</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Icône</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Matériel</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Référence</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Lien d'achat</th>
+                    <th scope="col" class="p-4 text-center text-sm text-slate-600">Actions</th>
+                </tr>
+                </thead>
+
+                <tbody class="bg-white divide-y divide-gray-300">
+                {% for hardware in hardwares %}
+                    <tr>
+                        <td class="p-2 text-sm font-medium text-gray-500">
+                            <div class="inline-flex items-center gap-x-3">
+                                <span>#{{ hardware.id }}</span>
+                            </div>
+                        </td>
+
+                        <td class="p-2 text-sm text-gray-500">{{ hardware.icon }}</td>
+
+                        <td class="p-2 text-sm text-gray-500">{{ hardware.brand }}</td>
+
+                        <td class="p-2 text-sm text-gray-500">
+                            <span class="hover:cursor-help" title="{{ hardware.model }}">{{ hardware.model }}</span>
+                        </td>
+                        <td class="p-2 text-sm text-gray-500">{{ hardware.url }}</td>
+                        <td class="p-2 text-sm">
+                            <div class="flex justify-center gap-x-2">
+
+                                <a title="Editer" class="rounded bg-slate-200 px-4 py-2 hover:bg-slate-300" href="{{ path('app_admin_hardware_edit', {'id': hardware.id}) }}">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+                                    </svg>
+                                </a>
+
+                                {{ include('admin/hardware/_delete_form.html.twig') }}
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center p-4">Aucune image dans la galerie</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div aria-hidden="true" class="invisible fixed top-0 left-0 z-20 flex h-screen w-screen flex-col items-center justify-center opacity-0 transition duration-500" id="modal-preview"></div>
+    </main>
+{% endblock %}

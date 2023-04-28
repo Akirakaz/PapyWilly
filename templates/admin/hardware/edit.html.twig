@@ -1,0 +1,19 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set title = "Edition d'un matériel" %}
+
+{% block pageTitle %}Admin - {{ title }}{% endblock %}
+
+{% block body %}
+    <main class="mx-auto w-full max-w-7xl flex-grow px-4 mt-20">
+
+        <h1 class="my-8 text-3xl">{{ title }}</h1>
+
+        <div class="flex justify-end gap-2">
+            <a class="rounded bg-slate-200 px-4 py-1 hover:bg-slate-300" href="{{ path('app_admin_hardware_index') }}">Retour</a>
+            {{ include('admin/hardware/_delete_form.html.twig') }}
+        </div>
+
+        {{ include('admin/hardware/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </main>
+{% endblock %}

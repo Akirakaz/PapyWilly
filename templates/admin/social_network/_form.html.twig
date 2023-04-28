@@ -1,0 +1,25 @@
+{{ form_start(form) }}
+<div class="flex w-full flex-col gap-4">
+    <div class="flex flex-col gap-2">
+        {{ form_label(form.icon) }}
+        {{ form_widget(form.icon, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.icon) }}
+    </div>
+    <div class="flex flex-col gap-2">
+        {{ form_label(form.url) }}
+        {{ form_widget(form.url, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.url) }}
+    </div>
+    <div class="flex flex-col gap-2">
+        {{ form_label(form.alt) }}
+        {{ form_widget(form.alt, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.alt) }}
+    </div>
+</div>
+<div class="mt-8 flex justify-end gap-4">
+    {% if form.saveAndAdd is defined %}
+        {{ form_row(form.saveAndAdd, {'attr': {'class': 'rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white'}}) }}
+    {% endif %}
+    <button class="rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}

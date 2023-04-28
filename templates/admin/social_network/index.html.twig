@@ -16,7 +16,7 @@
             <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
                 <thead class="bg-slate-300">
                 <tr>
-                    <th scope="col" class="w-1/12 p-4 text-center text-sm text-slate-600">Aperçu</th>
+                    <th scope="col" class="w-1/12 p-4 text-center text-sm text-slate-600">Icone</th>
                     <th scope="col" class="p-4 text-left text-sm text-slate-600">Alt</th>
                     <th scope="col" class="p-4 text-left text-sm text-slate-600">Url</th>
                     <th scope="col" class="w-1/12 p-4 text-center text-sm text-slate-600">Actions</th>
@@ -25,7 +25,7 @@
                 <tbody class="bg-white font-medium divide-y divide-gray-300">
                 {% for social_network in social_networks %}
                     <tr class="transition hover:bg-slate-100">
-                        <td class="p-2 text-center text-gray-500"><i class="icon {{ social_network.icon }} text-4xl text-slate-900"></i></td>
+                        <td class="p-2 text-center text-gray-500"><i class="icon {{ social_network.icon }} text-4xl text-slate-900 hover:text-coral-red-500 transition"></i></td>
                         <td class="whitespace-nowrap p-2 text-gray-500">{{ social_network.alt }}</td>
                         <td class="p-2 text-gray-500"><a class="flex transition hover:text-coral-red-500" href="{{ social_network.url }}" title="{{ social_network.url }}" target="_blank" rel="nofollow noopener noreferrer">
                                 {{ social_network.url }}

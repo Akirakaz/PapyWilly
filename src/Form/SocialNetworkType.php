@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Url;
 
 class SocialNetworkType extends AbstractType
 {
@@ -40,7 +41,12 @@ class SocialNetworkType extends AbstractType
                 'label' => "Url du service",
                 'attr' => [
                     'placeholder' => 'https://',
-                ]
+                ],
+                'constraints' => [
+                    new Url([
+                        'message' => "L'url n'est pas valide",
+                    ]),
+                ],
             ]);
     }
 

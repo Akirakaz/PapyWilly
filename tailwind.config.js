@@ -21,6 +21,7 @@ module.exports = {
             },
             fontFamily: {
                 rajdhani: ['Rajdhani, sans-serif'],
+                papywilly: ['PapyWilly, sans-serif'],
             },
             maxWidth: {
                 'screen-fhd': '120rem',

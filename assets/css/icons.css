@@ -1,0 +1,25 @@
+i[class*="icon-"]:before {
+    @apply font-papywilly not-italic leading-none align-middle;
+}
+
+.icon-discord:before {
+    content: "\f101";
+}
+.icon-facebook:before {
+    content: "\f102";
+}
+.icon-instagram:before {
+    content: "\f103";
+}
+.icon-tiktok:before {
+    content: "\f104";
+}
+.icon-twitch:before {
+    content: "\f105";
+}
+.icon-twitter:before {
+    content: "\f106";
+}
+.icon-youtube:before {
+    content: "\f107";
+}

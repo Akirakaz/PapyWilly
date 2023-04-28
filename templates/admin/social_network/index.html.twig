@@ -1,0 +1,57 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set title = "Gestion des réseaux sociaux" %}
+
+{% block pageTitle %}Admin - {{ title }}{% endblock %}
+
+{% block body %}
+    <main class="mx-auto mt-16 w-full max-w-screen-xl grow p-4">
+        <h1 class="my-8 text-4xl font text-center">{{ title }}</h1>
+
+        <div class="flex justify-end">
+            <a class="rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white" href="{{ path('app_admin_social_network_new') }}">Ajouter un réseau social</a>
+        </div>
+
+        <div class="overflow-auto">
+            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
+                <thead class="bg-slate-300">
+                <tr>
+                    <th scope="col" class="w-1/12 p-4 text-center text-sm text-slate-600">Icone</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Alt</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Url</th>
+                    <th scope="col" class="w-1/12 p-4 text-center text-sm text-slate-600">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="bg-white font-medium divide-y divide-gray-300">
+                {% for social_network in social_networks %}
+                    <tr class="transition hover:bg-slate-100">
+                        <td class="p-2 text-center text-gray-500"><i class="icon {{ social_network.icon }} text-4xl text-slate-900 hover:text-coral-red-500 transition"></i></td>
+                        <td class="whitespace-nowrap p-2 text-gray-500">{{ social_network.alt }}</td>
+                        <td class="p-2 text-gray-500"><a class="flex transition hover:text-coral-red-500" href="{{ social_network.url }}" title="{{ social_network.url }}" target="_blank" rel="nofollow noopener noreferrer">
+                                {{ social_network.url }}
+                                <svg class="w-6" viewBox="0 0 24 24">
+                                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6H7a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-5m-6 0 7.5-7.5M15 3h6v6"/>
+                                </svg>
+                            </a></td>
+                        <td class="p-2">
+                            <div class="flex justify-end gap-x-2">
+                                <a title="Editer" class="rounded bg-slate-200 px-4 py-2 transition hover:bg-blue-300" href="{{ path('app_admin_social_network_edit', {'id': social_network.id}) }}">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+                                    </svg>
+                                </a>
+
+                                {{ include('admin/social_network/_delete_form.html.twig') }}
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="p-4 text-center">Aucun Réseau social enregistré</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

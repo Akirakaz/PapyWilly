@@ -19,6 +19,7 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
+                default_target_path: app_login_success
                 enable_csrf: true
             remember_me:
                 name:   'cookie_willy'

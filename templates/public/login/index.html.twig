@@ -1,0 +1,62 @@
+{% extends "public/base.html.twig" %}
+
+{% block body %}
+    <main class="mx-auto mt-16 flex w-full max-w-screen-xl grow flex-col items-center justify-center p-4">
+        <h1 class="text-4xl text-white">Connexion</h1>
+
+        {% if error %}
+            <div class="text-white mt-4">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <div class="w-full max-w-sm">
+            {{ form_start(form) }}
+
+            <div class="flex flex-col">
+                {{ form_label(form.username, 'Identifiant', {
+                    'label_attr': {
+                        'class': 'text-white invisible',
+                        'aria-hidden': 'true'
+                    },
+                }) }}
+                {{ form_widget(form.username, {
+                    full_name:'_username',
+                    attr: { class: 'bg-slate-900 text-xl focus:bg-slate-800 text-white border border-slate-600 shadow-sm focus:border-coral-red-600 focus:ring focus:ring-coral-red-600 transition' }
+                }) }}
+            </div>
+            <div class="flex flex-col">
+                {{ form_label(form.password, 'Mot de passe', {
+                    'label_attr': {
+                        'class': 'text-white invisible',
+                        'aria-hidden': 'true'
+                    },
+                }) }}
+
+                {{ form_widget(form.password, {
+                    full_name:'_password',
+                    attr: { class: 'bg-slate-900 text-xl focus:bg-slate-800 text-white border border-slate-600 shadow-sm focus:border-coral-red-600 focus:ring focus:ring-coral-red-600 transition' }
+                }) }}
+            </div>
+
+            <div class="mt-4 flex">
+                {{ form_widget(form._remember_me, {
+                    full_name:'_remember_me',
+                    attr: { class: 'rounded bg-slate-900 border-slate-600 text-coral-red-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-coral-red-600 focus:ring-opacity-50' }
+                }) }}
+                {{ form_label(form._remember_me, 'Enregistrer', {'label_attr': {'class': 'text-white ml-2'}}) }}
+            </div>
+
+            {{ form_widget(form._token, {
+                full_name:'_csrf_token',
+            }) }}
+
+            <div class="mt-8 text-center">
+                <button type="submit"
+                        class="max-w-fit px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">
+                    Connexion
+                </button>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </main>
+{% endblock %}

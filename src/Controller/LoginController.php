@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\LoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -24,6 +25,17 @@ class LoginController extends AbstractController
             'error' => $authenticationUtils->getLastAuthenticationError(),
         ]);
     }
+
+    #[Route('/connexion/success', name: 'app_login_success')]
+    public function login_success(): RedirectResponse
+    {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->redirectToRoute('app_admin_dashboard');
+    }
+
 
     /**
      * @throws \Exception

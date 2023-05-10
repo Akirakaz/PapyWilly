@@ -2,24 +2,74 @@ i[class*="icon-"]:before {
     @apply font-papywilly not-italic leading-none align-middle;
 }
 
-.icon-discord:before {
+.icon-chaise:before {
     content: "\f101";
 }
-.icon-facebook:before {
+
+.icon-cpu:before {
     content: "\f102";
 }
-.icon-instagram:before {
+
+.icon-discord:before {
     content: "\f103";
 }
-.icon-tiktok:before {
+
+.icon-facebook:before {
     content: "\f104";
 }
-.icon-twitch:before {
+
+.icon-gpu:before {
     content: "\f105";
 }
-.icon-twitter:before {
+
+.icon-casque:before {
     content: "\f106";
 }
-.icon-youtube:before {
+
+.icon-instagram:before {
     content: "\f107";
+}
+
+.icon-clavier:before {
+    content: "\f108";
+}
+
+.icon-microphone:before {
+    content: "\f109";
+}
+
+.icon-carte-mere:before {
+    content: "\f10a";
+}
+
+.icon-souris:before {
+    content: "\f10b";
+}
+
+.icon-ram:before {
+    content: "\f10c";
+}
+
+.icon-ecran:before {
+    content: "\f10d";
+}
+
+.icon-tiktok:before {
+    content: "\f10e";
+}
+
+.icon-twitch:before {
+    content: "\f10f";
+}
+
+.icon-twitter:before {
+    content: "\f110";
+}
+
+.icon-webcam:before {
+    content: "\f111";
+}
+
+.icon-youtube:before {
+    content: "\f112";
 }

@@ -1,0 +1,41 @@
+{{ form_start(form) }}
+<div class="flex">
+    <div class="flex flex-col gap-2 grow">
+        {{ form_label(form.icon) }}
+
+        <div class="flex gap-2">
+            {{ form_widget(form.icon, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            <div class="flex justify-end w-14">
+                <i id="icon-preview" class="icon null text-5xl hover:text-coral-red-500 transition self-end"></i>
+            </div>
+        </div>
+
+        {{ form_errors(form.icon) }}
+    </div>
+</div>
+
+<div class="flex flex-col gap-2 mt-4">
+    {{ form_label(form.brand) }}
+    {{ form_widget(form.brand, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+    {{ form_errors(form.brand) }}
+</div>
+
+<div class="flex flex-col gap-2 mt-4">
+    {{ form_label(form.model) }}
+    {{ form_widget(form.model, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+    {{ form_errors(form.model) }}
+</div>
+
+<div class="flex flex-col gap-2 mt-4">
+    {{ form_label(form.url) }}
+    {{ form_widget(form.url, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+    {{ form_errors(form.url) }}
+</div>
+
+<div class="mt-8 flex justify-end gap-4">
+    {% if form.saveAndAdd is defined %}
+        {{ form_row(form.saveAndAdd, {'attr': {'class': 'rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white'}}) }}
+    {% endif %}
+    <button class="rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}

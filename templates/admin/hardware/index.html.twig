@@ -1,0 +1,73 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set title = "Gestion du materiel" %}
+
+{% block pageTitle %}Admin - {{ title }}{% endblock %}
+
+{% block body %}
+    <main class="mx-auto mt-16 w-full max-w-screen-xl grow p-4">
+
+        <h1 class="my-8 text-4xl font text-center">{{ title }}</h1>
+
+        <div class="flex justify-end">
+            <a class="rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white"
+               href="{{ path('app_admin_hardware_new') }}">Ajouter de materiel</a>
+        </div>
+
+        <div class="overflow-auto">
+            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
+                <thead class="bg-slate-300">
+                <tr>
+                    <th scope="col" class="w-1/12 p-4 text-center text-sm text-slate-600">Type</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Marque</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Modèle</th>
+                    <th scope="col" class="p-4 text-left text-sm text-slate-600">Lien d'achat</th>
+                    <th scope="col" class="w-1/12 p-4 text-center text-sm text-slate-600">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="bg-white font-medium divide-y divide-gray-300">
+                {% for hardware in hardwares %}
+                    <tr class="transition hover:bg-slate-100">
+                        <td class="p-2 text-center text-gray-500"
+                            title="{{ hardware.icon|replace({'icon-': '', '-': ' '})|upper }}"><i
+                                    class="icon {{ hardware.icon }} text-4xl text-slate-900 hover:text-coral-red-500 transition"></i>
+                        </td>
+                        <td class="whitespace-nowrap p-2 text-gray-500">{{ hardware.brand }}</td>
+                        <td class="whitespace-nowrap p-2 text-gray-500">{{ hardware.model }}</td>
+                        <td class="p-2 text-gray-500">
+                            {% if hardware.url %}
+                                <a class="flex transition hover:text-coral-red-500" href="{{ hardware.url }}"
+                                   title="{{ hardware.url }}" target="_blank" rel="nofollow noopener noreferrer">
+                                    {{ hardware.url }}
+                                    <svg class="w-6" viewBox="0 0 24 24">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                              stroke-linejoin="round" stroke-width="2"
+                                              d="M12 6H7a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-5m-6 0 7.5-7.5M15 3h6v6"/>
+                                    </svg>
+                                </a
+                            {% endif %}
+                        </td>
+                        <td class="p-2">
+                            <div class="flex justify-end gap-x-2">
+                                <a title="Editer" class="rounded bg-slate-200 px-4 py-2 transition hover:bg-blue-300"
+                                   href="{{ path('app_admin_hardware_edit', {'id': hardware.id}) }}">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                         class="h-5 w-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+                                    </svg>
+                                </a>
+                                {{ include('admin/hardware/_delete_form.html.twig') }}
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center p-4">Aucun materiel référencé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

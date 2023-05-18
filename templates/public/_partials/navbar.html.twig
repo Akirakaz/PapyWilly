@@ -20,9 +20,9 @@
                 </button>
             </div>
             <menu class="ml-10 hidden flex-grow gap-8 text-lg font-semibold uppercase text-white lg:flex">
-                <li class="after:bg-coral-red-500 u-link"><a href="#">Menu</a></li>
-                <li class="after:bg-coral-red-500 u-link"><a href="#">Menu</a></li>
-                <li class="after:bg-coral-red-500 u-link"><a href="#">Menu</a></li>
+                <li class="after:bg-coral-red-500 u-link"><a href="/">Acceuil</a></li>
+                <li class="after:bg-coral-red-500 u-link"><a href="{{ path('app_stream') }}">Stream</a></li>
+                <li class="after:bg-coral-red-500 u-link"><a href="{{ path('app_videos') }}">Vidéos</a></li>
             </menu>
             <menu class="hidden gap-6 text-lg font-semibold uppercase text-white lg:flex">
                 {% for network in socialNetworks() %}

@@ -1,0 +1,21 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set title = "Edition d'un nom de chaine" %}
+
+{% block pageTitle %}Admin - {{ title }}{% endblock %}
+
+{% block body %}
+    <main class="mx-auto mt-16 w-full max-w-screen-xl grow p-4">
+
+        <h1 class="my-8 text-center text-4xl font">{{ title }}</h1>
+
+        <div class="flex justify-end">
+            <a class="rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white"
+               href="{{ path('app_admin_settings_index') }}">Retour</a>
+        </div>
+
+        <div class="mx-auto mt-16 max-w-md">
+            {{ include('admin/settings/_form.html.twig') }}
+        </div>
+    </main>
+{% endblock %}

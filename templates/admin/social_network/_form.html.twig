@@ -1,20 +1,29 @@
 {{ form_start(form) }}
-<div class="flex w-full flex-col gap-4">
-    <div class="flex flex-col gap-2">
+<div class="flex">
+    <div class="flex flex-col gap-2 grow">
         {{ form_label(form.icon) }}
-        {{ form_widget(form.icon, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+
+        <div class="flex gap-2">
+            {{ form_widget(form.icon, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            <div class="flex justify-end w-14">
+                <i id="icon-preview" class="icon null text-5xl hover:text-coral-red-500 transition self-end"></i>
+            </div>
+        </div>
+
         {{ form_errors(form.icon) }}
     </div>
-    <div class="flex flex-col gap-2">
-        {{ form_label(form.url) }}
-        {{ form_widget(form.url, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.url) }}
-    </div>
-    <div class="flex flex-col gap-2">
-        {{ form_label(form.alt) }}
-        {{ form_widget(form.alt, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.alt) }}
-    </div>
+</div>
+
+<div class="flex flex-col gap-2 mt-4">
+    {{ form_label(form.url) }}
+    {{ form_widget(form.url, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+    {{ form_errors(form.url) }}
+</div>
+
+<div class="flex flex-col gap-2 mt-4">
+    {{ form_label(form.alt) }}
+    {{ form_widget(form.alt, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+    {{ form_errors(form.alt) }}
 </div>
 <div class="mt-8 flex justify-end gap-4">
     {% if form.saveAndAdd is defined %}

@@ -1,15 +1,15 @@
 {{ form_start(form) }}
 
 <div class="flex flex-col gap-2 mt-4">
-    {{ form_label(form.name_youtube) }}
-    {{ form_widget(form.name_youtube, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-    {{ form_errors(form.name_youtube) }}
+    {{ form_label(form.youtubeChannel) }}
+    {{ form_widget(form.youtubeChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+    {{ form_errors(form.youtubeChannel) }}
 </div>
 
 <div class="flex flex-col gap-2 mt-4">
-    {{ form_label(form.name_twitch) }}
-    {{ form_widget(form.name_twitch, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-    {{ form_errors(form.name_twitch) }}
+    {{ form_label(form.twitchChannel) }}
+    {{ form_widget(form.twitchChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+    {{ form_errors(form.twitchChannel) }}
 </div>
 
 <div class="mt-8 flex justify-end gap-4">

@@ -14,7 +14,7 @@ class Settings
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name_twitch = null;
+    private ?string $twitchChannel = null;
 
     #[ORM\Column(length: 255)]
     private ?string $youtubeChannel = null;
@@ -26,12 +26,12 @@ class Settings
 
     public function getTwitchChannel(): ?string
     {
-        return $this->name_twitch;
+        return $this->twitchChannel;
     }
 
-    public function setNameTwitch(string $name_twitch): self
+    public function setTwitchChannel(string $twitchChannel): self
     {
-        $this->name_twitch = $name_twitch;
+        $this->twitchChannel = $twitchChannel;
 
         return $this;
     }

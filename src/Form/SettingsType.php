@@ -14,8 +14,8 @@ class SettingsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name_twitch', TextType::class, [
-                'label' => 'Nom_Twitch',
+            ->add('twitchChannel', TextType::class, [
+                'label' => 'Channel Twitch',
                 'attr' => [
                     'placeholder' => 'Nom de chaine',
                 ],
@@ -25,8 +25,8 @@ class SettingsType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('name_youtube', TextType::class,[
-                'label' => 'Nom_Youtube',
+            ->add('youtubeChannel', TextType::class,[
+                'label' => 'Channel Youtube',
                 'attr' => [
                     'placeholder' => 'Nom de chaine',
                 ],

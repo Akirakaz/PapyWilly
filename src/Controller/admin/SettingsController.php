@@ -17,7 +17,7 @@ class SettingsController extends AbstractController
     public function index(SettingsRepository $settingsRepository): Response
     {
         return $this->render('admin/settings/index.html.twig', [
-            'settings' => $settingsRepository->findAll(),
+            'settings' => $settingsRepository->findAll()[0],
         ]);
     }
 
@@ -34,7 +34,7 @@ class SettingsController extends AbstractController
             return $this->redirectToRoute('app_admin_settings_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/settings/new.html.twig', [
+        return $this->render('admin/settings/new.html.twig', [
             'setting' => $setting,
             'form' => $form,
         ]);
@@ -52,7 +52,7 @@ class SettingsController extends AbstractController
             return $this->redirectToRoute('app_admin_settings_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/settings/edit.html.twig', [
+        return $this->render('admin/settings/edit.html.twig', [
             'setting' => $setting,
             'form' => $form,
         ]);

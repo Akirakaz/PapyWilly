@@ -14,36 +14,36 @@ class Settings
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name_twitch = null;
+    private ?string $twitchChannel = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name_youtube = null;
+    private ?string $youtubeChannel = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNameTwitch(): ?string
+    public function getTwitchChannel(): ?string
     {
-        return $this->name_twitch;
+        return $this->twitchChannel;
     }
 
-    public function setNameTwitch(string $name_twitch): self
+    public function setTwitchChannel(string $twitchChannel): self
     {
-        $this->name_twitch = $name_twitch;
+        $this->twitchChannel = $twitchChannel;
 
         return $this;
     }
 
-    public function getNameYoutube(): ?string
+    public function getYoutubeChannel(): ?string
     {
-        return $this->name_youtube;
+        return $this->youtubeChannel;
     }
 
-    public function setNameYoutube(string $name_youtube): self
+    public function setYoutubeChannel(string $youtubeChannel): self
     {
-        $this->name_youtube = $name_youtube;
+        $this->youtubeChannel = $youtubeChannel;
 
         return $this;
     }

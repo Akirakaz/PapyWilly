@@ -24,14 +24,13 @@
                 </tr>
                 </thead>
                 <tbody class="bg-white font-medium divide-y divide-gray-300">
-                {% for setting in settings %}
                     <tr class="transition hover:bg-slate-100">
-                        <td class="whitespace-nowrap p-2 text-center text-gray-500">{{ settings[0].getNameTwitch }}</td>
-                        <td class="whitespace-nowrap p-2 text-center text-gray-500">{{ settings[0].getNameYoutube }}</td>
+                        <td class="whitespace-nowrap p-2 text-center text-gray-500">{{ settings.twitchChannel }}</td>
+                        <td class="whitespace-nowrap p-2 text-center text-gray-500">{{ settings.youtubeChannel }}</td>
                         <td class="p-2">
                             <div class="flex justify-end gap-x-2">
                                 <a title="Editer" class="rounded bg-slate-200 px-4 py-2 transition hover:bg-blue-300"
-                                   href="{{ path('app_admin_settings_edit', {'id': settings[0].getId}) }}">
+                                   href="{{ path('app_admin_settings_edit', {'id': settings.getId}) }}">
                                     <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                          class="h-5 w-5">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -42,11 +41,6 @@
                             </div>
                         </td>
                     </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="5" class="text-center p-4">Aucune chaine</td>
-                    </tr>
-                {% endfor %}
                 </tbody>
             </table>
         </div>

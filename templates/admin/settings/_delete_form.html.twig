@@ -1,6 +1,6 @@
-<form method="post" action="{{ path('app_admin_settings_delete', {'id': settings[0].getId}) }}"
+<form method="post" action="{{ path('app_admin_settings_delete', {'id': settings.getId}) }}"
     onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ settings[0].getId) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ settings.getId) }}">
     <button title="Supprimer" class="rounded bg-slate-200 px-4 py-2 transition hover:bg-red-300">
         <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
             <path stroke-linecap="round" stroke-linejoin="round"

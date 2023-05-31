@@ -49,6 +49,8 @@ class SettingsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $settingsRepository->save($setting, true);
 
+            $this->addFlash('succès', "L'image a bien été mise à jour.");
+
             return $this->redirectToRoute('app_admin_settings_index', [], Response::HTTP_SEE_OTHER);
         }
 

@@ -3,29 +3,27 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <header class="mx-auto flex w-full bg-center bg-no-repeat py-32 transition-all md:bg-cover" style="background-image: url('https://via.placeholder.com/1920x800/ff4654/000000')">
+    <header class="mx-auto flex w-full bg-center bg-no-repeat py-32 transition-all md:bg-cover" style="background-image: url('{{ asset('assets/img/BannerZelda.jpg') }}')">
         <div class="w-0 md:w-1/2"></div>
         <div class="flex w-full flex-col items-center px-4 md:w-1/2 md:items-start">
-            <h1 class="text-white text-2xl font-medium uppercase #PappyWilly ml-2">Live stream</h1>
-            <h2 class="mt-2 text-center font-bold uppercase text-white transition-all text-8xlc md:text-left lg:text-9xlc xl:text-10xlc">
-                <span class="block theme-text-color">Lorem</span><span>gaming</span>
+            <h2 class="mt-2 text-center font-bold uppercase text-white transition-all text-8xl md:text-left ">
+                <span class="block theme-text-color ">PapyWilly</span><span>gaming</span>
             </h2>
             <a href="#" class="mt-8 ml-2 px-6 font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">
                 Go to my channel
             </a>
         </div>
     </header>
-    <main class="mx-auto max-w-screen-xl p-4 md:p-8 grow">
-        <section class="mx-auto mt-32 flex max-w-screen-xl">
-            <div class="w-full self-center md:pr-8 lg:w-1/2">
+    <main class="mx-auto max-w-screen-xl p-4 md:p-8 ">
+        <section class="mx-auto mt-32 flex-col md:flex-row max-w-screen-xl">
+            <div class="w-full self-center md:pr-8 md:w-1/2">
                 <h2 class="text-xl font-medium uppercase text-coral-red-500">About me</h2>
-                <p class="text-5xl font-bold uppercase text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <p class="mt-8 font-medium text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque corporis dolorem eaque, eius impedit in iste iusto nam officia omnis quam quia quos repellendus repudiandae sequi soluta
-                    suscipit ullam unde.</p>
+                <p class="text-5xl font-bold uppercase text-white">{{ settings.profilTitle }}</p>
+                <p class="mt-8 font-medium text-gray-400">{{ settings.profilDescription }}</p>
                 <p class="mt-8 text-right text-3xl font-semibold text-white lg:mt-8">{{ SITE_NAME }}</p>
             </div>
-            <div class="hidden md:block md:w-1/2 md:pl-4">
-                <img class="rounded object-cover object-center" src="https://via.placeholder.com/640x480/ff4654/ffffff" alt="Alt image">
+            <div class="w-full md:w-1/2 md:pl-4">
+                <img class="rounded object-cover object-center" src="{{ vich_uploader_asset(settings) }}" alt="{{ settings.imageName }}">
             </div>
         </section>
 
@@ -47,17 +45,19 @@
                          x-show="hardwareExpanded"
                          x-collapse.min.450px
                     >
-                        {% for i in 1..10 %}
+                        {% for hardware in hardwares %}
                             <div class="flex w-full max-w-2xl flex-wrap items-center justify-between gap-x-8">
                                 <div class="flex grow gap-8">
-                                    <img src="https://via.placeholder.com/64x64" alt="">
+                                    <div class="text-center w-14">
+                                        <i title="{{ hardware.icon|replace({'icon-': '', '-': ' '})|upper }}" class="icon {{ hardware.icon }} text-5xl text-white hover:text-coral-red-500 transition"></i>
+                                    </div>
                                     <div class="flex flex-col justify-center">
-                                        <p class="text-xl text-white">Hardware model</p>
-                                        <p class="text-gray-400">Hardware brand</p>
+                                        <p class="text-xl text-white">{{ hardware.brand }}</p>
+                                        <p class="text-gray-400">{{ hardware.model }}</p>
                                     </div>
                                 </div>
                                 <div class="flex w-full justify-end md:w-fit">
-                                    <a class="max-w-fit px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700" href="#">Buy it now!</a>
+                                    <a class="max-w-fit px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700" href="{{ hardware.url}}">Buy it now!</a>
                                 </div>
                             </div>
                         {% endfor %}

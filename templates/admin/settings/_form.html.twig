@@ -1,15 +1,36 @@
 {{ form_start(form) }}
+<div>
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.youtubeChannel) }}
+        {{ form_widget(form.youtubeChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.youtubeChannel) }}
+    </div>
 
-<div class="flex flex-col gap-2 mt-4">
-    {{ form_label(form.youtubeChannel) }}
-    {{ form_widget(form.youtubeChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-    {{ form_errors(form.youtubeChannel) }}
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.twitchChannel) }}
+        {{ form_widget(form.twitchChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.twitchChannel) }}
+    </div>
 </div>
 
-<div class="flex flex-col gap-2 mt-4">
-    {{ form_label(form.twitchChannel) }}
-    {{ form_widget(form.twitchChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-    {{ form_errors(form.twitchChannel) }}
+<div>
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.profilTitle) }}
+        {{ form_widget(form.profilTitle, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.profilTitle) }}
+    </div>
+
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.profilDescription) }}
+        {{ form_widget(form.profilDescription, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.profilDescription) }}
+    </div>
+
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.imageFile) }}
+        {{ form_widget(form.imageFile, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.imageFile) }}
+    </div>
 </div>
 
 <div class="mt-8 flex justify-end gap-4">

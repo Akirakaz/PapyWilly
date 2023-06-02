@@ -33,6 +33,38 @@
     </div>
 </div>
 
+<div>
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.channelDescription) }}
+        {{ form_widget(form.channelDescription, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.channelDescription) }}
+    </div>
+
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.channelCity) }}
+        {{ form_widget(form.channelCity, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.channelCity) }}
+    </div>
+
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.channelPlatforms) }}
+        {{ form_widget(form.channelPlatforms, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.channelPlatforms) }}
+    </div>
+
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.channelContent) }}
+        {{ form_widget(form.channelContent, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.channelContent) }}
+    </div>
+
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.channelGame) }}
+        {{ form_widget(form.channelGame, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.channelGame) }}
+    </div>
+</div>
+
 <div class="mt-8 flex justify-end gap-4">
     {% if form.saveAndAdd is defined %}
         {{ form_row(form.saveAndAdd, {'attr': {'class': 'rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white'}}) }}

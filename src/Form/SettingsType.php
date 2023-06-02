@@ -84,6 +84,59 @@ class SettingsType extends AbstractType
                         'mimeTypesMessage'  => false,
                     ]),
                 ],
+            ])
+            ->add('channelDescription', TextType::class, [
+                'label' => 'Channel Description',
+                'attr' => [
+                    'placeholder' => 'Description de chaine',
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez renseigner la description de votre chaine',
+                    ]),
+                ],
+            ])
+            ->add('channelCity', TextType::class,[
+                'label' => 'Channel City',
+                'attr' => [
+                    'placeholder' => 'Ville, Pays',
+                ],
+                'constraints' => [
+                    new notBlank([
+                        'message' => 'Veuillez renseigner la ville et votre Pays',
+                    ])
+                ]
+            ])->add('channelPlatforms', TextType::class, [
+                'label' => 'Channel Platforms',
+                'attr' => [
+                    'placeholder' => 'Platformes de jeux de la chaine',
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez renseigner la ou les platformes de jeux de la chaine',
+                    ]),
+                ],
+            ])
+            ->add('channelContent', TextType::class,[
+                'label' => 'Channel Contenu',
+                'attr' => [
+                    'placeholder' => 'Limitation d\'ages de la chaine',
+                ],
+                'constraints' => [
+                    new notBlank([
+                        'message' => 'Veuillez renseigner l\'age minimal recommandé pour la chaine',
+                    ])
+                ]
+            ])->add('channelGame', TextType::class, [
+                'label' => 'Channel Game',
+                'attr' => [
+                    'placeholder' => 'Jeux favoris de la chaine',
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez renseigner les jeux favoris de votre chaine',
+                    ]),
+                ],
             ]);
         ;
     }

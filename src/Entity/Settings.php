@@ -40,6 +40,21 @@ class Settings
     #[ORM\Column(nullable: true)]
     private ?string $imageName = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $channelDescription = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $channelCity = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $channelPlatforms = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $channelContent = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $channelGame = null;
+
 
     public function getId(): ?int
     {
@@ -128,6 +143,66 @@ class Settings
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getChannelDescription(): ?string
+    {
+        return $this->channelDescription;
+    }
+
+    public function setChannelDescription(string $channelDescription): self
+    {
+        $this->channelDescription = $channelDescription;
+
+        return $this;
+    }
+
+    public function getChannelCity(): ?string
+    {
+        return $this->channelCity;
+    }
+
+    public function setChannelCity(string $channelCity): self
+    {
+        $this->channelCity = $channelCity;
+
+        return $this;
+    }
+
+    public function getChannelPlatforms(): ?string
+    {
+        return $this->channelPlatforms;
+    }
+
+    public function setChannelPlatforms(string $channelPlatforms): self
+    {
+        $this->channelPlatforms = $channelPlatforms;
+
+        return $this;
+    }
+
+    public function getChannelContent(): ?string
+    {
+        return $this->channelContent;
+    }
+
+    public function setChannelContent(string $channelContent): self
+    {
+        $this->channelContent = $channelContent;
+
+        return $this;
+    }
+
+    public function getChannelGame(): ?string
+    {
+        return $this->channelGame;
+    }
+
+    public function setChannelGame(string $channelGame): self
+    {
+        $this->channelGame = $channelGame;
+
+        return $this;
     }
 
 }

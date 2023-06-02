@@ -15,17 +15,22 @@
         </div>
     </header>
     <main class="mx-auto max-w-screen-xl p-4 md:p-8 ">
-        <section class="mx-auto mt-32 flex-col md:flex-row max-w-screen-xl">
-            <div class="w-full self-center md:pr-8 md:w-1/2">
-                <h2 class="text-xl font-medium uppercase text-coral-red-500">About me</h2>
-                <p class="text-5xl font-bold uppercase text-white">{{ settings.profilTitle }}</p>
-                <p class="mt-8 font-medium text-gray-400">{{ settings.profilDescription }}</p>
-                <p class="mt-8 text-right text-3xl font-semibold text-white lg:mt-8">{{ SITE_NAME }}</p>
-            </div>
-            <div class="w-full md:w-1/2 md:pl-4">
-                <img class="rounded object-cover object-center" src="{{ vich_uploader_asset(settings) }}" alt="{{ settings.imageName }}">
-            </div>
-        </section>
+        <div class="flex flex-wrap lg:flex-nowrap">
+            <section class="mx-auto mt-32 w-full max-w-screen-sm lg:w-1/2">
+                <div class="w-full self-center md:pr-8 ">
+                    <h2 class="text-xl font-medium uppercase text-coral-red-500">About me</h2>
+                    <p class="text-5xl font-bold uppercase text-white">{{ settings.profilTitle }}</p>
+                    <p class="mt-8 font-medium text-gray-400">{{ settings.profilDescription }}</p>
+                    <p class="mt-8 text-right text-3xl font-semibold text-white lg:mt-8">{{ SITE_NAME }}</p>
+                </div>
+            </section>
+            <section class="mx-auto mt-10 w-full max-w-screen-sm lg:w-1/2 lg:mt-40">
+                <div class="w-full md:pl-4">
+                    <img class="rounded object-cover object-center" src="{{ vich_uploader_asset(settings) }}" alt="{{ settings.imageName }}">
+                </div>
+            </section>
+        </div>
+
 
         <div class="flex flex-wrap xl:flex-nowrap">
             <section class="mx-auto mt-32 w-full max-w-screen-sm lg:w-3/4">
@@ -82,27 +87,24 @@
                     </h2>
                 </div>
                 <div class="mt-16">
-                    <p class="text-xl text-gray-400">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, cumque dicta dolore dolorum eius eos, eum eveniet fuga maiores necessitatibus reiciendis sequi temporibus totam voluptas voluptates. Commodi praesentium saepe
-                        suscipit!
-                    </p>
+                    <p class="text-xl text-gray-400">{{ settings.channelDescription }}</p>
                     <div class="mt-8">
                         <ul class="flex flex-col gap-8 text-gray-300">
                             <li class="flex justify-between">
                                 <span>From</span>
-                                <span class="font-semibold">City, Country</span>
+                                <span class="font-semibold">{{ settings.channelCity }}</span>
                             </li>
                             <li class="flex justify-between">
                                 <span>Platforms</span>
-                                <span class="font-semibold">PC, PS5, XBox</span>
+                                <span class="font-semibold">{{ settings.channelPlatforms }}</span>
                             </li>
                             <li class="flex justify-between">
                                 <span>Content</span>
-                                <span class="font-semibold">All Ages</span>
+                                <span class="font-semibold">{{ settings.channelContent }}</span>
                             </li>
                             <li class="flex justify-between">
                                 <span>Favorite Game</span>
-                                <span class="font-semibold">Favorite game</span>
+                                <span class="font-semibold">{{ settings.channelGame }}</span>
                             </li>
                         </ul>
                     </div>

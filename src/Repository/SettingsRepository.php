@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Settings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,6 +38,18 @@ class SettingsRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     */
+    public function getSettings(): mixed
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.settingKey = :setting_key')
+            ->setParameter('setting_key', 'settings')
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
 //    /**

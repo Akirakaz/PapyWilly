@@ -1,68 +1,72 @@
-{{ form_start(form) }}
-<div>
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.youtubeChannel) }}
-        {{ form_widget(form.youtubeChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.youtubeChannel) }}
-    </div>
+{% form_theme form with [
+    'forms_layout/tailwind_form_layout.html.twig',
+    'forms_layout/vich_form_layout.html.twig'
+] %}
 
-    <div class="flex flex-col gap-2 mt-4">
+{{ form_start(form) }}
+<fieldset class="flex gap-4 p-2 flex-wrap sm:flex-nowrap justify-between border border-slate-400 rounded">
+    <legend class="px-2 font-semibold">Informations générales</legend>
+    <div class="flex flex-col gap-2 w-full">
         {{ form_label(form.twitchChannel) }}
         {{ form_widget(form.twitchChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
         {{ form_errors(form.twitchChannel) }}
     </div>
-</div>
 
-<div>
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.profilTitle) }}
-        {{ form_widget(form.profilTitle, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.profilTitle) }}
+    <div class="flex flex-col gap-2 w-full">
+        {{ form_label(form.youtubeChannel) }}
+        {{ form_widget(form.youtubeChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.youtubeChannel) }}
     </div>
+</fieldset>
 
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.profilDescription) }}
-        {{ form_widget(form.profilDescription, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.profilDescription) }}
-    </div>
+<div class="flex flex-wrap xl:flex-nowrap gap-8 mt-8">
+    <fieldset class="p-2 border border-slate-400 rounded w-full xl:w-1/2">
+        <legend class="px-2 font-semibold">Présentation</legend>
+        <div class="flex flex-col gap-2">
+            {{ form_label(form.aboutTitle) }}
+            {{ form_widget(form.aboutTitle, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_errors(form.aboutTitle) }}
+        </div>
 
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.imageFile) }}
-        {{ form_widget(form.imageFile, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.imageFile) }}
-    </div>
-</div>
+        <div class="flex flex-col gap-2 mt-4">
+            {{ form_label(form.aboutDescription) }}
+            {{ form_widget(form.aboutDescription, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_errors(form.aboutDescription) }}
+        </div>
 
-<div>
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.channelDescription) }}
-        {{ form_widget(form.channelDescription, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.channelDescription) }}
-    </div>
+        <div class="flex flex-col gap-2 mt-4">
+            {{ form_label(form.imageFile) }}
+            {{ form_widget(form.imageFile, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_errors(form.imageFile) }}
+        </div>
+    </fieldset>
 
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.channelCity) }}
-        {{ form_widget(form.channelCity, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.channelCity) }}
-    </div>
+    <fieldset class="p-2 border border-slate-400 rounded w-full xl:w-1/2">
+        <legend class="px-2 font-semibold">Infos sur la chaine</legend>
+        <div class="flex flex-col gap-2 mt-4">
+            {{ form_label(form.channelDescription) }}
+            {{ form_widget(form.channelDescription, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_errors(form.channelDescription) }}
+        </div>
 
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.channelPlatforms) }}
-        {{ form_widget(form.channelPlatforms, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.channelPlatforms) }}
-    </div>
+        <div class="flex flex-col gap-2 mt-4">
+            {{ form_label(form.channelCountry) }}
+            {{ form_widget(form.channelCountry, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_errors(form.channelCountry) }}
+        </div>
 
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.channelContent) }}
-        {{ form_widget(form.channelContent, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.channelContent) }}
-    </div>
+        <div class="flex flex-col gap-2 mt-4">
+            {{ form_label(form.channelPlatforms) }}
+            {{ form_widget(form.channelPlatforms, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_errors(form.channelPlatforms) }}
+        </div>
 
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.channelGame) }}
-        {{ form_widget(form.channelGame, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.channelGame) }}
-    </div>
+        <div class="flex flex-col gap-2 mt-4">
+            {{ form_label(form.channelGames) }}
+            {{ form_widget(form.channelGames, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_errors(form.channelGames) }}
+        </div>
+    </fieldset>
 </div>
 
 <div class="mt-8 flex justify-end gap-4">
@@ -72,3 +76,4 @@
     <button class="rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white">{{ button_label|default('Enregistrer') }}</button>
 </div>
 {{ form_end(form) }}
+

@@ -1,0 +1,77 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set title = "Gestion des paramètres" %}
+
+{% block pageTitle %}Admin - {{ title }}{% endblock %}
+
+{% block body %}
+    <main class="mx-auto mt-16 w-full max-w-screen-xl grow p-4">
+        <h1 class="my-8 text-center text-4xl font">{{ title }}</h1>
+
+        <div class="mt-5 flex justify-end">
+            <a title="Editer" class="flex gap-2 rounded bg-slate-200 px-4 py-2 transition hover:bg-blue-300" href="{{ path('app_admin_settings_edit') }}">
+                <span>Editer</span>
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+                </svg>
+            </a>
+        </div>
+
+        <section class="mt-8">
+            <fieldset class="flex flex-wrap justify-between gap-4 rounded border border-slate-400 bg-slate-50 p-2 sm:flex-nowrap">
+                <legend class="rounded bg-slate-300 px-2 font-semibold">Informations générales</legend>
+                <div class="flex w-full gap-2">
+                    <span class="font-medium">ID de chaine Twitch:</span>
+                    <span>{{ settings.twitchChannel ?: 'n/a' }}</span>
+                </div>
+                <div class="flex w-full gap-2">
+                    <span class="font-medium">ID de chaine YouTube:</span>
+                    <span>{{ settings.youtubeChannel ?: 'n/a' }}</span>
+                </div>
+            </fieldset>
+
+            <div class="mt-8 flex flex-wrap gap-8 xl:flex-nowrap">
+                <fieldset class="w-full rounded border border-slate-400 bg-slate-50 p-2 xl:w-1/2">
+                    <legend class="rounded bg-slate-300 px-2 font-semibold">Présentation</legend>
+                    <div class="mt-4 flex gap-2">
+                        <span class="font-medium">Titre:</span>
+                        <p>{{ settings.aboutTitle }}</p>
+                    </div>
+
+                    <div class="mt-4 flex flex-col gap-2">
+                        <span class="font-medium">Description:</span>
+                        <p>{{ settings.aboutDescription }}</p>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <img class="rounded object-cover object-center max-w-[256px]" src="{{ vich_uploader_asset(settings) }}" alt="Photo pour illustrer la section à propos.">
+                    </div>
+                </fieldset>
+
+                <fieldset class="w-full rounded border border-slate-400 bg-slate-50 p-2 xl:w-1/2">
+                    <legend class="rounded bg-slate-300 px-2 font-semibold">Infos sur la chaine</legend>
+                    <div class="mt-4 flex flex-col gap-2">
+                        <span class="font-medium">Description:</span>
+                        <p>{{ settings.channelDescription }}</p>
+                    </div>
+
+                    <div class="mt-4 flex gap-2">
+                        <span class="font-medium">Pays:</span>
+                        <p>{{ settings.channelCountry }}</p>
+                    </div>
+
+                    <div class="mt-4 flex gap-2">
+                        <span class="font-medium">Plateformes:</span>
+                        <p>{{ settings.channelPlatforms }}</p>
+                    </div>
+
+                    <div class="mt-4 flex gap-2">
+                        <span class="font-medium">Jeux favoris:</span>
+                        <p>{{ settings.channelGames }}</p>
+                    </div>
+                </fieldset>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+

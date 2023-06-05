@@ -6,7 +6,6 @@ vich_uploader:
             uri_prefix: /images/settings
             upload_destination: '%kernel.project_dir%/public/images/settings'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true

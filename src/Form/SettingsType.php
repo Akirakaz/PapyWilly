@@ -32,22 +32,22 @@ class SettingsType extends AbstractType
             ])
             ->add('aboutTitle', TextType::class, [
                 'required' => false,
-                'label' => 'Titre de présentation',
+                'label' => 'Titre',
                 'attr' => [
-                    'placeholder' => 'Titre de présentation',
+                    'placeholder' => 'Titre',
                 ],
             ])
             ->add('aboutDescription', TextareaType::class, [
                 'required' => false,
-                'label' => 'Description de présentation',
+                'label' => 'Description',
                 'attr' => [
-                    'placeholder' => 'Description de présentation',
+                    'placeholder' => 'Description',
                 ],
             ])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'data_class' => null,
-                'label' => 'Photo de profil',
+                'label' => 'Image',
                 'constraints' => [
                     new ImageConstraints([
                         'maxSize' => '1M',
@@ -71,7 +71,7 @@ class SettingsType extends AbstractType
             ])
             ->add('channelDescription', TextareaType::class, [
                 'required' => false,
-                'label' => 'Description de la chaine',
+                'label' => 'Description',
                 'attr' => [
                     'placeholder' => 'Chaine de gaming chill...',
                 ]

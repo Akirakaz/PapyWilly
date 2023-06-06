@@ -7,3 +7,4 @@ import "../css/app.css";
 import "./alpinejs";
 import "./modalVideo";
 import "./icon-preview";
+import "./choices";

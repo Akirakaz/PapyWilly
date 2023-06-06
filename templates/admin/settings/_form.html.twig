@@ -57,13 +57,13 @@
 
         <div class="flex flex-col gap-2 mt-4">
             {{ form_label(form.channelPlatforms) }}
-            {{ form_widget(form.channelPlatforms, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_widget(form.channelPlatforms, {'attr': {'class': 'choices-single w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
             {{ form_errors(form.channelPlatforms) }}
         </div>
 
         <div class="flex flex-col gap-2 mt-4">
             {{ form_label(form.channelGames) }}
-            {{ form_widget(form.channelGames, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+            {{ form_widget(form.channelGames, {'attr': {'class': 'choices-single w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
             {{ form_errors(form.channelGames) }}
         </div>
     </fieldset>

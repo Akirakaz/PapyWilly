@@ -87,16 +87,32 @@
                     <div class="mt-8">
                         <ul class="flex flex-col gap-8 text-gray-300">
                             <li class="flex justify-between">
-                                <span>Pays</span>
-                                <span class="font-semibold">{{ settings.channelCountry ?: 'n/a' }}</span>
+                                <span>Pays:</span>
+                                <span class="cursor-default self-center rounded border border-slate-100/20 bg-slate-100/10 px-1 text-sm font-semibold">{{ settings.channelCountry ?: '--' }}</span>
                             </li>
-                            <li class="flex justify-between">
-                                <span>Plateformes</span>
-                                <span class="font-semibold">{{ settings.channelPlatforms ?: 'n/a' }}</span>
+
+                            <li class="flex flex-wrap justify-between">
+                                <span>Plateformes:</span>
+                                {% set platformArray = settings.channelPlatforms|split(',') %}
+                                <ul class="flex flex-wrap gap-1">
+                                    {% for platform in platformArray %}
+                                        <li class="cursor-default self-center rounded border border-slate-100/20 bg-slate-100/10 px-1 text-sm font-semibold">
+                                            {{ platform }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </li>
-                            <li class="flex justify-between">
-                                <span>Jeux favoris</span>
-                                <span class="font-semibold">{{ settings.channelGames ?: 'n/a' }}</span>
+
+                            <li class="flex flex-wrap justify-between">
+                                <span>Jeux favoris:</span>
+                                {% set channelGamesArray = settings.channelGames|split(',') %}
+                                <ul class="flex flex-wrap gap-1">
+                                    {% for game in channelGamesArray %}
+                                        <li class="cursor-default self-center rounded border border-slate-100/20 bg-slate-100/10 px-1 text-sm font-semibold">
+                                            {{ game }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </li>
                         </ul>
                     </div>

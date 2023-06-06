@@ -55,20 +55,36 @@
                         <p>{{ settings.channelDescription }}</p>
                     </div>
 
-                    <div class="mt-4 flex gap-2">
-                        <span class="font-medium">Pays:</span>
-                        <p>{{ settings.channelCountry }}</p>
-                    </div>
+                    <ul class="flex flex-col gap-8 mt-8">
+                        <li class="flex justify-between">
+                            <span class="font-medium">Pays:</span>
+                            <span class="cursor-default self-center rounded border border-slate-600/20 bg-slate-600/10 px-1 text-sm font-semibold">{{ settings.channelCountry ?: '--' }}</span>
+                        </li>
 
-                    <div class="mt-4 flex gap-2">
-                        <span class="font-medium">Plateformes:</span>
-                        <p>{{ settings.channelPlatforms }}</p>
-                    </div>
+                        <li class="flex flex-wrap justify-between">
+                            <span class="font-medium">Plateformes:</span>
+                            {% set platformArray = settings.channelPlatforms|split(',') %}
+                            <ul class="flex flex-wrap gap-1">
+                                {% for platform in platformArray %}
+                                    <li class="cursor-default self-center rounded border border-slate-600/20 bg-slate-600/10 px-1 text-sm font-semibold">
+                                        {{ platform }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
 
-                    <div class="mt-4 flex gap-2">
-                        <span class="font-medium">Jeux favoris:</span>
-                        <p>{{ settings.channelGames }}</p>
-                    </div>
+                        <li class="flex flex-wrap justify-between">
+                            <span class="font-medium">Jeux favoris:</span>
+                            {% set channelGamesArray = settings.channelGames|split(',') %}
+                            <ul class="flex flex-wrap gap-1">
+                                {% for game in channelGamesArray %}
+                                    <li class="cursor-default self-center rounded border border-slate-600/20 bg-slate-600/10 px-1 text-sm font-semibold">
+                                        {{ game }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
                 </fieldset>
             </div>
         </section>

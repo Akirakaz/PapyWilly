@@ -18,42 +18,41 @@ class Settings
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 10, unique: true)]
+    private ?string $settingKey = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $twitchChannel = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $youtubeChannel = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $profilTitle = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $aboutTitle = null;
 
-    #[ORM\Column(length: 1500)]
-    private ?string $profilDescription = null;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $aboutDescription = null;
 
-
-    #[Vich\UploadableField(mapping: 'settings', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField(mapping: 'settings', fileNameProperty: 'aboutImage')]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(nullable: true)]
-    private ?string $imageName = null;
+    private ?string $aboutImage = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $channelDescription = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $channelCity = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $channelCountry = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $channelPlatforms = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $channelContent = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $channelGame = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $channelGames = null;
 
 
     public function getId(): ?int
@@ -66,7 +65,7 @@ class Settings
         return $this->twitchChannel;
     }
 
-    public function setTwitchChannel(string $twitchChannel): self
+    public function setTwitchChannel(?string $twitchChannel): self
     {
         $this->twitchChannel = $twitchChannel;
 
@@ -78,37 +77,36 @@ class Settings
         return $this->youtubeChannel;
     }
 
-    public function setYoutubeChannel(string $youtubeChannel): self
+    public function setYoutubeChannel(?string $youtubeChannel): self
     {
         $this->youtubeChannel = $youtubeChannel;
 
         return $this;
     }
 
-    public function getProfilTitle(): ?string
+    public function getAboutTitle(): ?string
     {
-        return $this->profilTitle;
+        return $this->aboutTitle;
     }
 
-    public function setProfilTitle(string $profilTitle): self
+    public function setAboutTitle(?string $aboutTitle): self
     {
-        $this->profilTitle = $profilTitle;
+        $this->aboutTitle = $aboutTitle;
 
         return $this;
     }
 
-    public function getProfilDescription(): ?string
+    public function getAboutDescription(): ?string
     {
-        return $this->profilDescription;
+        return $this->aboutDescription;
     }
 
-    public function setProfilDescription(string $profilDescription): self
+    public function setAboutDescription(?string $aboutDescription): self
     {
-        $this->profilDescription = $profilDescription;
+        $this->aboutDescription = $aboutDescription;
 
         return $this;
     }
-
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -135,14 +133,14 @@ class Settings
         return $this->imageFile;
     }
 
-    public function setImageName(?string $imageName): void
+    public function setAboutImage(?string $aboutImage): void
     {
-        $this->imageName = $imageName;
+        $this->aboutImage = $aboutImage;
     }
 
-    public function getImageName(): ?string
+    public function getAboutImage(): ?string
     {
-        return $this->imageName;
+        return $this->aboutImage;
     }
 
     public function getChannelDescription(): ?string
@@ -150,21 +148,21 @@ class Settings
         return $this->channelDescription;
     }
 
-    public function setChannelDescription(string $channelDescription): self
+    public function setChannelDescription(?string $channelDescription): self
     {
         $this->channelDescription = $channelDescription;
 
         return $this;
     }
 
-    public function getChannelCity(): ?string
+    public function getChannelCountry(): ?string
     {
-        return $this->channelCity;
+        return $this->channelCountry;
     }
 
-    public function setChannelCity(string $channelCity): self
+    public function setChannelCountry(?string $channelCountry): self
     {
-        $this->channelCity = $channelCity;
+        $this->channelCountry = $channelCountry;
 
         return $this;
     }
@@ -174,35 +172,34 @@ class Settings
         return $this->channelPlatforms;
     }
 
-    public function setChannelPlatforms(string $channelPlatforms): self
+    public function setChannelPlatforms(?string $channelPlatforms): self
     {
         $this->channelPlatforms = $channelPlatforms;
 
         return $this;
     }
 
-    public function getChannelContent(): ?string
+    public function getChannelGames(): ?string
     {
-        return $this->channelContent;
+        return $this->channelGames;
     }
 
-    public function setChannelContent(string $channelContent): self
+    public function setChannelGames(?string $channelGames): self
     {
-        $this->channelContent = $channelContent;
+        $this->channelGames = $channelGames;
 
         return $this;
     }
 
-    public function getChannelGame(): ?string
+    public function getSettingKey(): ?string
     {
-        return $this->channelGame;
+        return $this->settingKey;
     }
 
-    public function setChannelGame(string $channelGame): self
+    public function setSettingKey(?string $settingKey): self
     {
-        $this->channelGame = $channelGame;
+        $this->settingKey = $settingKey;
 
         return $this;
     }
-
 }

@@ -6,109 +6,88 @@
 
 {% block body %}
     <main class="mx-auto mt-16 w-full max-w-screen-xl grow p-4">
+        <h1 class="my-8 text-center text-4xl font">{{ title }}</h1>
 
-        <h1 class="my-8 text-4xl font text-center">{{ title }}</h1>
-        {% if not settings %}
-            <div class="flex justify-end">
-                <a class="rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white"
-                   href="{{ path('app_admin_settings_new') }}">Ajouter de nom de chaine</a>
-            </div>
-        {% endif %}
-
-        <div class="overflow-auto">
-            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
-                <thead class="bg-slate-300">
-                    <tr>
-                        <th scope="col" class="w-1/2 p-4 text-sm text-slate-600">Nom de chaine Twitch</th>
-                        <th scope="col" class="w-1/2 p-4 text-sm text-slate-600">Nom de chaine Youtube</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white font-medium divide-y divide-gray-300">
-                    <tr class="transition hover:bg-slate-100">
-                        <td class="whitespace-nowrap p-2 text-center text-gray-500">{{ settings.twitchChannel }}</td>
-                        <td class="whitespace-nowrap p-2 text-center text-gray-500">{{ settings.youtubeChannel }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
-                <thead class="bg-slate-300">
-                    <tr>
-                        <th scope="col" class="w-1/3 p-4 text-sm text-slate-600">Titre du Profil</th>
-                        <th scope="col" class="w-1/3 p-4 text-sm text-slate-600">Image du Profil</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white font-medium divide-y divide-gray-300">
-                    <tr class="transition hover:bg-slate-100">
-                        <td class="w-1/2 p-2 text-center text-gray-500">{{ settings.profilTitle }}</td>
-                        <td class="w-1/2 p-2 text-gray-500">
-                            <img class="w-auto cursor-zoom-in rounded-sm" src="{{ vich_uploader_asset(settings) }}" alt="{{ settings.imageName }}" data-modalpreview="modal-preview">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
-                <thead class="bg-slate-300">
-                <tr>
-                    <th scope="col" class="w-full p-4 text-sm text-slate-600">Description du Profil</th>
-                </tr>
-                </thead>
-                <tbody class="bg-white font-medium divide-y divide-gray-300">
-                    <tr class="transition hover:bg-slate-100">
-                        <td class="w-3/6 p-2 text-gray-500">{{ settings.profilDescription }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
-                <thead class="bg-slate-300">
-                    <tr>
-                        <th scope="col" class="w-full p-4 text-sm text-slate-600">Description de la chaine</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white font-medium divide-y divide-gray-300">
-                    <tr class="transition hover:bg-slate-100">
-                        <td class="w-full p-2 text-gray-500">{{ settings.channelDescription }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
-                <thead class="bg-slate-300">
-                    <tr>
-                        <th scope="col" class="w-1/3 p-4 text-sm text-slate-600">Ville, Pays</th>
-                        <th scope="col" class="w-1/3 p-4 text-sm text-slate-600">Platformes de Jeux</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white font-medium divide-y divide-gray-300">
-                    <tr class="transition hover:bg-slate-100">
-                        <td class="whitespace-nowrap p-2 text-gray-500">{{ settings.channelCity }}</td>
-                        <td class="whitespace-nowrap p-2 text-gray-500">{{ settings.channelPlatforms }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="mt-4 min-w-full table-auto divide-y divide-gray-200">
-                <thead class="bg-slate-300">
-                <tr>
-                    <th scope="col" class="w-1/3 p-4 text-sm text-slate-600">Contenu pour Ages</th>
-                    <th scope="col" class="w-1/3 p-4 text-sm text-slate-600">Jeux Favoris </th>
-                </tr>
-                </thead>
-                <tbody class="bg-white font-medium divide-y divide-gray-300">
-                <tr class="transition hover:bg-slate-100">
-                    <td class="whitespace-nowrap p-2 text-gray-500">{{ settings.channelContent }}</td>
-                    <td class="whitespace-nowrap p-2 text-gray-500">{{ settings.channelGame }}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="flex justify-end gap-x-2 mt-5">
-            <a title="Editer" class="rounded bg-slate-200 px-4 py-2 transition hover:bg-blue-300"
-               href="{{ path('app_admin_settings_edit', {'id': settings.getId}) }}">
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                     class="h-5 w-5">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+        <div class="mt-5 flex justify-end">
+            <a title="Editer" class="flex gap-2 rounded bg-slate-200 px-4 py-2 transition hover:bg-blue-300" href="{{ path('app_admin_settings_edit') }}">
+                <span>Editer</span>
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
                 </svg>
             </a>
-            {{ include('admin/settings/_delete_form.html.twig') }}
         </div>
+
+        <section class="mt-8">
+            <fieldset class="flex flex-wrap justify-between gap-4 rounded border border-slate-400 bg-slate-50 p-2 sm:flex-nowrap">
+                <legend class="rounded bg-slate-300 px-2 font-semibold">Informations générales</legend>
+                <div class="flex w-full gap-2">
+                    <span class="font-medium">ID de chaine Twitch:</span>
+                    <span>{{ settings.twitchChannel ?: 'n/a' }}</span>
+                </div>
+                <div class="flex w-full gap-2">
+                    <span class="font-medium">ID de chaine YouTube:</span>
+                    <span>{{ settings.youtubeChannel ?: 'n/a' }}</span>
+                </div>
+            </fieldset>
+
+            <div class="mt-8 flex flex-wrap gap-8 xl:flex-nowrap">
+                <fieldset class="w-full rounded border border-slate-400 bg-slate-50 p-2 xl:w-1/2">
+                    <legend class="rounded bg-slate-300 px-2 font-semibold">Présentation</legend>
+                    <div class="mt-4 flex gap-2">
+                        <span class="font-medium">Titre:</span>
+                        <p>{{ settings.aboutTitle }}</p>
+                    </div>
+
+                    <div class="mt-4 flex flex-col gap-2">
+                        <span class="font-medium">Description:</span>
+                        <p>{{ settings.aboutDescription }}</p>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <img class="rounded object-cover object-center max-w-[256px]" src="{{ vich_uploader_asset(settings) }}" alt="Photo pour illustrer la section à propos.">
+                    </div>
+                </fieldset>
+
+                <fieldset class="w-full rounded border border-slate-400 bg-slate-50 p-2 xl:w-1/2">
+                    <legend class="rounded bg-slate-300 px-2 font-semibold">Infos sur la chaine</legend>
+                    <div class="mt-4 flex flex-col gap-2">
+                        <span class="font-medium">Description:</span>
+                        <p>{{ settings.channelDescription }}</p>
+                    </div>
+
+                    <ul class="flex flex-col gap-8 mt-8">
+                        <li class="flex justify-between">
+                            <span class="font-medium">Pays:</span>
+                            <span class="cursor-default self-center rounded border border-slate-600/20 bg-slate-600/10 px-1 text-sm font-semibold">{{ settings.channelCountry ?: '--' }}</span>
+                        </li>
+
+                        <li class="flex flex-wrap justify-between">
+                            <span class="font-medium">Plateformes:</span>
+                            {% set platformArray = settings.channelPlatforms|split(',') %}
+                            <ul class="flex flex-wrap gap-1">
+                                {% for platform in platformArray %}
+                                    <li class="cursor-default self-center rounded border border-slate-600/20 bg-slate-600/10 px-1 text-sm font-semibold">
+                                        {{ platform }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+
+                        <li class="flex flex-wrap justify-between">
+                            <span class="font-medium">Jeux favoris:</span>
+                            {% set channelGamesArray = settings.channelGames|split(',') %}
+                            <ul class="flex flex-wrap gap-1">
+                                {% for game in channelGamesArray %}
+                                    <li class="cursor-default self-center rounded border border-slate-600/20 bg-slate-600/10 px-1 text-sm font-semibold">
+                                        {{ game }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+        </section>
     </main>
 {% endblock %}
+

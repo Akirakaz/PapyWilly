@@ -4,12 +4,11 @@ namespace App\Form;
 
 use App\Entity\Settings;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Image as ImageConstraints;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class SettingsType extends AbstractType
@@ -18,124 +17,84 @@ class SettingsType extends AbstractType
     {
         $builder
             ->add('twitchChannel', TextType::class, [
-                'label' => 'Channel Twitch',
+                'required' => false,
+                'label' => 'Chaine Twitch',
                 'attr' => [
-                    'placeholder' => 'Nom de chaine',
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez renseigner votre nom de chaine',
-                    ]),
+                    'placeholder' => 'ID de chaine',
                 ],
             ])
-            ->add('youtubeChannel', TextType::class,[
-                'label' => 'Channel Youtube',
+            ->add('youtubeChannel', TextType::class, [
+                'required' => false,
+                'label' => 'Chaine Youtube',
                 'attr' => [
-                    'placeholder' => 'Nom de chaine',
+                    'placeholder' => 'ID de chaine',
                 ],
-                'constraints' => [
-                    new notBlank([
-                        'message' => 'Veuillez renseigner votre nom de chaine',
-                    ])
-                ]
             ])
-            ->add('profilTitle', TextType::class,[
-                'label' => 'Titre du Profil',
+            ->add('aboutTitle', TextType::class, [
+                'required' => false,
+                'label' => 'Titre',
                 'attr' => [
-                    'placeholder' => 'Titre de présentation',
+                    'placeholder' => 'Titre',
                 ],
-                'constraints' => [
-                    new notBlank([
-                        'message' => 'Veuillez renseigner votre titre de présentation',
-                    ])
-                ]
             ])
-            ->add('profilDescription', TextType::class,[
-                'label' => 'Profil Description',
+            ->add('aboutDescription', TextareaType::class, [
+                'required' => false,
+                'label' => 'Description',
                 'attr' => [
-                    'placeholder' => 'Description de présentation',
+                    'placeholder' => 'Description',
                 ],
-                'constraints' => [
-                    new notBlank([
-                        'message' => 'Veuillez renseigner votre description',
-                    ])
-                ]
             ])
             ->add('imageFile', VichImageType::class, [
-                'required'    => false,
-                'label'       => 'Photo de profil',
+                'required' => false,
                 'data_class' => null,
+                'label' => 'Image',
                 'constraints' => [
                     new ImageConstraints([
-                        'maxSize'           => '1M',
-                        'extensions'        => [
+                        'maxSize' => '1M',
+                        'extensions' => [
                             'jpg',
                             'jpeg',
                             'png',
                             'webp',
                             'avif',
                         ],
-                        'mimeTypes'         => [
+                        'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
                             'image/webp',
                             'image/avif',
                         ],
-                        'mimeTypesMessage'  => false,
+                        'mimeTypesMessage' => false,
+                        'maxSizeMessage' => "L'image ne doit pas dépasser {{ limit }} {{ suffix }}",
                     ]),
                 ],
             ])
-            ->add('channelDescription', TextType::class, [
-                'label' => 'Channel Description',
+            ->add('channelDescription', TextareaType::class, [
+                'required' => false,
+                'label' => 'Description',
                 'attr' => [
-                    'placeholder' => 'Description de chaine',
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez renseigner la description de votre chaine',
-                    ]),
-                ],
-            ])
-            ->add('channelCity', TextType::class,[
-                'label' => 'Channel City',
-                'attr' => [
-                    'placeholder' => 'Ville, Pays',
-                ],
-                'constraints' => [
-                    new notBlank([
-                        'message' => 'Veuillez renseigner la ville et votre Pays',
-                    ])
+                    'placeholder' => 'Chaine de gaming chill...',
                 ]
-            ])->add('channelPlatforms', TextType::class, [
-                'label' => 'Channel Platforms',
+            ])
+            ->add('channelCountry', TextType::class, [
+                'required' => false,
+                'label' => 'Pays',
                 'attr' => [
-                    'placeholder' => 'Platformes de jeux de la chaine',
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez renseigner la ou les platformes de jeux de la chaine',
-                    ]),
+                    'placeholder' => 'France',
                 ],
             ])
-            ->add('channelContent', TextType::class,[
-                'label' => 'Channel Contenu',
+            ->add('channelPlatforms', TextType::class, [
+                'required' => false,
+                'label' => 'Plateformes',
                 'attr' => [
-                    'placeholder' => 'Limitation d\'ages de la chaine',
-                ],
-                'constraints' => [
-                    new notBlank([
-                        'message' => 'Veuillez renseigner l\'age minimal recommandé pour la chaine',
-                    ])
+                    'placeholder' => 'PC, PS5, XBox, Switch...',
                 ]
-            ])->add('channelGame', TextType::class, [
-                'label' => 'Channel Game',
+            ])
+            ->add('channelGames', TextType::class, [
+                'required' => false,
+                'label' => 'Jeux favoris',
                 'attr' => [
-                    'placeholder' => 'Jeux favoris de la chaine',
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez renseigner les jeux favoris de votre chaine',
-                    ]),
+                    'placeholder' => 'Diablo, WoW, LoL...',
                 ],
             ]);
         ;

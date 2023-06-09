@@ -1,0 +1,25 @@
+{% form_theme form with [
+    'forms_layout/tailwind_form_layout.html.twig',
+    'forms_layout/vich_form_layout.html.twig'
+] %}
+
+{{ form_start(form) }}
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.altText) }}
+        {{ form_widget(form.altText, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.altText) }}
+    </div>
+
+    <div class="flex flex-col gap-2 mt-4">
+        {{ form_label(form.imageFile) }}
+        {{ form_widget(form.imageFile, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.imageFile) }}
+    </div>
+
+<div class="mt-8 flex justify-end gap-4">
+    {% if form.saveAndAdd is defined %}
+        {{ form_row(form.saveAndAdd, {'attr': {'class': 'rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white'}}) }}
+    {% endif %}
+    <button class="rounded bg-slate-50 px-4 py-2 font-medium transition hover:bg-slate-600 hover:text-white">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}

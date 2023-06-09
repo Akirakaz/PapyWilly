@@ -1,15 +1,11 @@
 <section class="splide" aria-labelledby="carousel-heading">
     <div class="splide__track">
         <ul class="splide__list">
+            {% for banner in banners %}
             <li class="splide__slide">
-                <img class="w-full h-full object-cover object-center" src="https://via.placeholder.com/1920x800/000000/ff4654?text=Placeholder" alt="">
+                <img class="w-full h-full object-cover object-center" src="{{ vich_uploader_asset(banner) }}" alt="{{ banner.altText }}">
             </li>
-            <li class="splide__slide">
-                <img class="w-full h-full object-cover object-center" src="https://via.placeholder.com/1920x800/cccccc/2c313c?text=Placeholder" alt="">
-            </li>
-            <li class="splide__slide">
-                <img class="w-full h-full object-cover object-center" src="https://via.placeholder.com/1920x800/ff4654/000000?text=Placeholder" alt="">
-            </li>
+            {% endfor %}
         </ul>
     </div>
     <div class="splide__progress">

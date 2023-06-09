@@ -13,7 +13,7 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    {% include 'public/home/header.html.twig' %}
+    {% include 'public/home/header.html.twig' with { 'banners': banners } %}
     <main class="mx-auto w-full max-w-screen-xl p-4">
         {% if settings.aboutTitle %}
             <section class="mx-auto mt-16 flex max-w-screen-xl">

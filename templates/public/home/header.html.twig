@@ -1,0 +1,39 @@
+<section class="splide" aria-labelledby="carousel-heading">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide">
+                <img class="w-full h-full object-cover object-center" src="https://via.placeholder.com/1920x800/000000/ff4654?text=Placeholder" alt="">
+            </li>
+            <li class="splide__slide">
+                <img class="w-full h-full object-cover object-center" src="https://via.placeholder.com/1920x800/cccccc/2c313c?text=Placeholder" alt="">
+            </li>
+            <li class="splide__slide">
+                <img class="w-full h-full object-cover object-center" src="https://via.placeholder.com/1920x800/ff4654/000000?text=Placeholder" alt="">
+            </li>
+        </ul>
+    </div>
+    <div class="splide__progress">
+        <div class="splide__progress__bar bg-coral-red-500">
+        </div>
+    </div>
+    <div class="mx-auto flex flex-row-reverse w-full">
+
+        <div class="absolute z-1 top-0 flex flex-col h-full w-full justify-center items-center lg:w-1/2 px-4">
+            <h1 class="z-1 home-title text-shadow-lg shadow-black mt-2 text-center font-bold uppercase text-white transition-all">
+                <span class="block theme-text-color">{{ SITE_NAME }}</span><span>gaming</span>
+            </h1>
+            <a href="#" class="mt-8 ml-2 px-6 font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">
+                Go to my channel
+            </a>
+        </div>
+
+        <button class="splide__toggle absolute z-2 bottom-4 right-4 border bg-slate-100/50 hover:bg-slate-300/80 transition rounded" type="button">
+            <span class="splide__toggle__play">
+                <svg class="w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M8 19V5l11 7-11 7Z"/></svg>
+            </span>
+            <span class="splide__toggle__pause">
+                <svg class="w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </span>
+        </button>
+    </div>
+</section>

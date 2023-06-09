@@ -7,7 +7,8 @@ export default defineConfig({
     build: {
         rollupOptions: {
             input: {
-                app: "./assets/js/app.js"
+                app: "./assets/js/app.js",
+                splide: "./assets/js/splide.js",
             },
             output: {
                 assetFileNames: (assetInfo) => {

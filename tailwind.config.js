@@ -1,4 +1,5 @@
 const colorPalette = require('./assets/js/colorPalette')
+const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -40,6 +41,11 @@ module.exports = {
                 '8xlc': ['6rem', '4.5rem'],
                 '9xlc': ['8rem', '6rem'],
                 '10xlc': ['10.625rem', '8rem'],
+            },
+            textShadow: {
+                sm: '0 1px 2px var(--tw-shadow-color)',
+                DEFAULT: '0 2px 4px var(--tw-shadow-color)',
+                lg: '0 8px 16px var(--tw-shadow-color)',
             }
         },
         fontFamily: {
@@ -48,6 +54,16 @@ module.exports = {
     },
     plugins: [
         require("@tailwindcss/forms"),
+        plugin(function({ matchUtilities, theme }) {
+            matchUtilities(
+                {
+                    'text-shadow': (value) => ({
+                        textShadow: value
+                    }),
+                },
+                { values: theme('textShadow') }
+            )
+        }),
     ],
 };
 

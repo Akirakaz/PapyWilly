@@ -2,8 +2,10 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="{{ asset('assets/img/favicon.svg') }}" type="image/svg+xml">
+
         {% block stylesheets %}
             {{ vite_entry_link_tags('app') }}
         {% endblock %}
@@ -12,7 +14,7 @@
             {{ vite_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="flex flex-col min-h-[100dvh] bg-mirage-500 max-w-screen-qhd mx-auto">
+    <body class="mx-auto flex flex-col overflow-x-hidden min-h-[100vh] bg-mirage-500 max-w-screen-qhd">
         {% include 'public/_partials/navbar.html.twig' %}
         {% block body %}{% endblock %}
         {% include 'public/_partials/footer.html.twig' %}

@@ -1,5 +1,8 @@
 /.idea
 /public/images/
+.yarnrc.yml
+/.yarn/
+*.DS_Store
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

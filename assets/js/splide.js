@@ -8,7 +8,7 @@ const splide = new Splide('.splide', {
     autoplay: true,
     perPage: 1,
     speed: 5000,
-    interval: 15000,
+    interval: 10000,
     resetProgress: false,
     pagination: true,
     arrows: false,

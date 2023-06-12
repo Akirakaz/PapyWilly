@@ -31,6 +31,8 @@ class HardwareController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $hardwareRepository->save($hardware, true);
 
+            $this->addFlash('succès', "Le matériel a bien été enregistré.");
+
             return $this->redirectToRoute('app_admin_hardware_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -49,6 +51,8 @@ class HardwareController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $hardwareRepository->save($hardware, true);
 
+            $this->addFlash('succès', "Le matériel a bien été mis à jour.");
+
             return $this->redirectToRoute('app_admin_hardware_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -63,6 +67,8 @@ class HardwareController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$hardware->getId(), $request->request->get('_token'))) {
             $hardwareRepository->remove($hardware, true);
+
+            $this->addFlash('succès', "Le matériel a bien été supprimé.");
         }
 
         return $this->redirectToRoute('app_admin_hardware_index', [], Response::HTTP_SEE_OTHER);

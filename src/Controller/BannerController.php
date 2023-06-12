@@ -38,6 +38,8 @@ class BannerController extends AbstractController
                 ? 'app_admin_banner_new'
                 : 'app_admin_banner_index';
 
+            $this->addFlash('succès', "La bannière a bien été enregistrée.");
+
             return $this->redirectToRoute($nextAction);
         }
 
@@ -56,6 +58,8 @@ class BannerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $bannerRepository->save($banner, true);
 
+            $this->addFlash('succès', "La bannière a bien été mise à jour.");
+
             return $this->redirectToRoute('app_admin_banner_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -70,6 +74,8 @@ class BannerController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$banner->getId(), $request->request->get('_token'))) {
             $bannerRepository->remove($banner, true);
+
+            $this->addFlash('succès', "La bannière a bien été supprimée.");
         }
 
         return $this->redirectToRoute('app_admin_banner_index', [], Response::HTTP_SEE_OTHER);

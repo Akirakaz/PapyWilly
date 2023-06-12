@@ -39,6 +39,8 @@ class SettingsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $settingsRepository->save($settings, true);
 
+            $this->addFlash('succès', "Les paramètres a bien été mis à jour.");
+
             return $this->redirectToRoute('app_admin_settings_index', [], Response::HTTP_SEE_OTHER);
         }
 

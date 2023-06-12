@@ -59,7 +59,7 @@ class SocialNetworkController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $socialNetworkRepository->save($socialNetwork, true);
 
-            $this->addFlash('succès', "Le réseau social a bien été enregistré.");
+            $this->addFlash('succès', "Le réseau social a bien été mis à jour.");
 
             return $this->redirectToRoute('app_admin_social_network_index', [], Response::HTTP_SEE_OTHER);
         }

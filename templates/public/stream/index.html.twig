@@ -48,48 +48,54 @@
             </div>
 
             <div class="mt-24 grid grid-cols-1 gap-8 md:grid-cols-2">
-                {% for i in 1..2 %}
+                {% for stream in upcoming_streams %}
                     <div class="flex gap-8 border-l-8 p-8 bg-mirage-400 border-coral-red-500">
                         <div class="flex flex-col items-center">
-                            <span class="font-bold uppercase text-coral-red-500">{{ 'now'|date('D')|format_date(locale='fr', pattern='EEE') }}</span>
-                            <span class="text-3xl font-bold text-white">{{ 'now'|date('d') }}</span>
-                            <span class="text-sm font-semibold uppercase text-gray-500">{{ 'now'|date('M')|format_date(locale='fr', pattern='MMM') }}</span>
+                            <span class="font-bold uppercase text-coral-red-500">{{ stream.start_time|date('D')|format_date(locale='fr', pattern='EEE') }}</span>
+                            <span class="text-3xl font-bold text-white">{{ stream.start_time|date('d') }}</span>
+                            <span class="text-sm font-semibold uppercase text-gray-500">{{ stream.start_time|date('M')|format_date(locale='fr', pattern='MMM') }}</span>
                         </div>
-                        <div class="flex flex-col gap-8 self-center">
+                        <div class="flex flex-col gap-8">
                             <div class="flex gap-8">
                                 <img class="w-16" src="https://via.placeholder.com/64x64" alt="">
                                 <div>
-                                    <p class="font-bold uppercase text-coral-red-500">Game Name</p>
-                                    <p class="text-sm text-white">Event description</p>
-                                    <p class="text-sm font-semibold uppercase text-gray-400">00:00 - 00:00</p>
+                                    <p class="font-bold uppercase text-coral-red-500">{{ stream.category.name }}</p>
+                                    <p class="text-sm text-white">{{ stream.title }}</p>
+                                    <p class="text-sm font-semibold uppercase text-gray-400">{{ stream.start_time|date("H:i") }} - {{ stream.end_time|date("H:i") }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
 
-                {% for i in 1..2 %}
-                    <div class="flex gap-8 border-l-8 p-8 bg-mirage-400 border-coral-red-500">
-                        <div class="flex flex-col items-center">
-                            <span class="font-bold uppercase text-coral-red-500">{{ 'now'|date('D')|format_date(locale='fr', pattern='EEE') }}</span>
-                            <span class="text-3xl font-bold text-white">{{ 'now'|date('d') }}</span>
-                            <span class="text-sm font-semibold uppercase text-gray-500">{{ 'now'|date('M')|format_date(locale='fr', pattern='MMM') }}</span>
-                        </div>
-                        <div class="flex flex-col gap-8">
 
-                            {% for i in 1..2 %}
-                                <div class="flex gap-8">
-                                    <img class="w-16" src="https://via.placeholder.com/64x64" alt="">
-                                    <div>
-                                        <p class="font-bold uppercase text-coral-red-500">Game Name</p>
-                                        <p class="text-sm text-white">Event description</p>
-                                        <p class="text-sm font-semibold uppercase text-gray-400">00:00 - 00:00</p>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
+
+<div class="bg-white">
+    {% set groupedStreams = {} %}
+
+    {% for stream in upcoming_streams %}
+        {% set date = stream.start_time|date('Y-m-d') %}
+        {% set groupedStreams = groupedStreams|merge({date: (groupedStreams[date] ?? [])|merge([stream])}) %}
+    {% endfor %}
+
+    {% for date, streams in groupedStreams %}
+        <h2>{{ date }}</h2>
+        <ul>
+            {% for stream in streams %}
+                <li>{{ stream.title }} - {{ stream.start_time|date("H:i") }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    <h2>Autres streams</h2>
+    <ul>
+        {% for stream in upcoming_streams %}
+            {% if stream.start_time|date('Y-m-d') not in groupedStreams %}
+                <li>{{ stream.title }} - {{ stream.start_time|date("H:i") }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+</div>
             </div>
         </section>
     </main>

@@ -33,6 +33,8 @@ class LoginController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
+        $this->addFlash('succès', "Vous êtes connecté");
+
         return $this->redirectToRoute('app_admin_dashboard');
     }
 
@@ -43,7 +45,14 @@ class LoginController extends AbstractController
     #[Route('/logout', name: 'app_logout', methods: ['GET'])]
     public function logout()
     {
-        // controller can be blank: it will never be called!
         throw new \Exception('Don\'t forget to activate logout in security.yaml');
+    }
+
+    #[Route('/logout/success', name: 'app_logout_success', methods: ['GET'])]
+    public function logout_success(): RedirectResponse
+    {
+        $this->addFlash('succès', 'Vous êtes déconnecté(e).');
+
+        return $this->redirectToRoute('app_home');
     }
 }

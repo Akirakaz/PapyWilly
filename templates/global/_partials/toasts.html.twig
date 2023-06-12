@@ -1,0 +1,23 @@
+<div class="fixed top-8 z-20 flex flex-col gap-4 sm:right-2">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div
+                    class="relative w-full rounded border border-l-8 border-green-500 bg-green-100 p-4 mt-10 shadow-lg sm:min-w-[20rem] sm:max-w-[20rem]"
+                    x-data="{ toast: true }"
+                    x-show="toast"
+                    x-transition:leave="transition ease-in duration-500"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0 translate-x-[30rem]"
+                    x-init="setTimeout(() => toast = false, 5000)"
+            >
+        <span class="absolute right-2 top-2 cursor-pointer" @click="toast = false">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </span>
+                <p class="text-xl font-semibold toast-label">{{ label|capitalize }}</p>
+                <p class="text-sm text-slate-700">{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>

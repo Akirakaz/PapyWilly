@@ -30,6 +30,7 @@ security:
                     doctrine: true
             logout:
                 path: app_logout
+                target: app_logout_success
             login_throttling:
                 max_attempts: 3
                 interval: 5 minutes

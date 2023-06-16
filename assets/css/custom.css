@@ -21,3 +21,23 @@
     line-height: 0.75;
     transition: all 0.25s ease-out;
 }
+
+.badge {
+    @apply inline-flex items-center rounded-full px-1.5 py-0 text-sm font-medium ring-1 ring-inset;
+
+    &-green {
+        @apply text-green-400 ring-green-500/50;
+    }
+    &-blue {
+        @apply text-sky-400 ring-sky-500/50;
+    }
+    &-red {
+        @apply text-red-500 ring-red-500/50;
+    }
+    &-yellow {
+        @apply text-yellow-500 ring-yellow-500/50;
+    }
+    &-orange {
+        @apply text-orange-400 ring-orange-500/50;
+    }
+}

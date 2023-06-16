@@ -16,7 +16,7 @@
 
         <section class="mt-16">
             <iframe class="aspect-video"
-                    src="https://player.twitch.tv/?channel={{ settings.twitchChannel }}&parent=localhost&autoplay=false"
+                    src="https://player.twitch.tv/?channel={{ twitchChannel }}&parent=localhost&autoplay=false"
                     parent="localhost"
                     width="100%"
                     allowfullscreen
@@ -28,7 +28,7 @@
             <div x-show="chat" class="fixed right-8 bottom-8 z-1">
                 <span @click="chat = false" class="cursor-pointer text-white">Fermer</span>
                 <iframe class="mt-1"
-                        src="https://www.twitch.tv/embed/{{ settings.twitchChannel }}/chat?parent=localhost"
+                        src="https://www.twitch.tv/embed/{{ twitchChannel }}/chat?parent=localhost"
                         height="555"
                         width="100%">
                 </iframe>
@@ -37,53 +37,39 @@
 
 
         <section class="mx-auto mt-24 max-w-screen-xl">
-            <div class="flex w-full justify-center">
+            <div class="flex flex-col w-full items-center">
                 <h2 class="text-center">
                     <span class="block text-xl font-medium uppercase text-coral-red-500">Stream</span>
                     <span class="flex text-7xl font-bold uppercase text-white">
                         <svg class="mr-2 w-2 self-end mb-3.5 fill-coral-red-500" fill="none" viewBox="0 0 11 11"><path d="M.81.31h10v10h-10z"/></svg>
-                        Schedule
+                        Calendrier
                     </span>
                 </h2>
             </div>
 
-            <div class="mt-24 grid grid-cols-1 gap-8 md:grid-cols-2">
-                {% for i in 1..2 %}
-                    <div class="flex gap-8 border-l-8 p-8 bg-mirage-400 border-coral-red-500">
-                        <div class="flex flex-col items-center">
-                            <span class="font-bold uppercase text-coral-red-500">{{ 'now'|date('D')|format_date(locale='fr', pattern='EEE') }}</span>
-                            <span class="text-3xl font-bold text-white">{{ 'now'|date('d') }}</span>
-                            <span class="text-sm font-semibold uppercase text-gray-500">{{ 'now'|date('M')|format_date(locale='fr', pattern='MMM') }}</span>
-                        </div>
-                        <div class="flex flex-col gap-8 self-center">
-                            <div class="flex gap-8">
-                                <img class="w-16" src="https://via.placeholder.com/64x64" alt="">
-                                <div>
-                                    <p class="font-bold uppercase text-coral-red-500">Game Name</p>
-                                    <p class="text-sm text-white">Event description</p>
-                                    <p class="text-sm font-semibold uppercase text-gray-400">00:00 - 00:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+            <div>
+                <h3 class="text-slate-300 text-center">
+                    Semaine du: {{ scheduleWeek.start|date('d-m', 'GMT') }} au {{ scheduleWeek.end|date('d-m', 'GMT') }}
+                </h3>
+            </div>
 
-                {% for i in 1..2 %}
-                    <div class="flex gap-8 border-l-8 p-8 bg-mirage-400 border-coral-red-500">
+            <div class="mt-24 columns-1 gap-8 lg:columns-2">
+                {% for eventDate, events in schedule %}
+                    <div class="mb-8 flex break-inside-avoid gap-8 border-l-8 p-8 bg-mirage-400 border-coral-red-500">
                         <div class="flex flex-col items-center">
-                            <span class="font-bold uppercase text-coral-red-500">{{ 'now'|date('D')|format_date(locale='fr', pattern='EEE') }}</span>
-                            <span class="text-3xl font-bold text-white">{{ 'now'|date('d') }}</span>
-                            <span class="text-sm font-semibold uppercase text-gray-500">{{ 'now'|date('M')|format_date(locale='fr', pattern='MMM') }}</span>
+                            <span class="font-bold uppercase text-coral-red-500">{{ eventDate|date('D')|format_date(locale='fr', pattern='EEE') }}</span>
+                            <span class="text-3xl font-bold text-white">{{ eventDate|date('d') }}</span>
+                            <span class="text-sm font-semibold uppercase text-gray-500">{{ eventDate|date('M')|format_date(locale='fr', pattern='MMM') }}</span>
                         </div>
-                        <div class="flex flex-col gap-8">
-
-                            {% for i in 1..2 %}
-                                <div class="flex gap-8">
-                                    <img class="w-16" src="https://via.placeholder.com/64x64" alt="">
+                        <div class="flex w-full flex-col gap-8">
+                            {% for event in events %}
+                                <div class="flex w-full gap-8">
+                                    <img class="w-24 h-32" src="{{ event.thumbnail_url }}" alt="">
                                     <div>
-                                        <p class="font-bold uppercase text-coral-red-500">Game Name</p>
-                                        <p class="text-sm text-white">Event description</p>
-                                        <p class="text-sm font-semibold uppercase text-gray-400">00:00 - 00:00</p>
+                                        <p class="font-bold uppercase text-coral-red-500">{{ event.category }}</p>
+                                        <p class="text-white">{{ event.title }}</p>
+                                        <p class="mt-4 font-semibold uppercase text-gray-400">{{ event.start_time|date("H:i") }} - {{ event.end_time|date("H:i") }}</p>
+                                        <span class="-ml-1.5 badge badge-{{ event.status.color }}">{{ event.status.title }}</span>
                                     </div>
                                 </div>
                             {% endfor %}

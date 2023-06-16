@@ -1,4 +1,4 @@
 parameters:
-  app.twitch_client_id: '%env(TWITCH_CLIENT_ID)%'
-  app.twitch_client_secret: '%env(TWITCH_CLIENT_SECRET)%'
+  app.twitch_client_id: '%env(TWITCH_PUBLIC_KEY)%'
+  app.twitch_client_secret: '%env(TWITCH_SECRET_KEY)%'
   app.twitch_channel_id: '%env(TWITCH_CHANNEL_ID)%'

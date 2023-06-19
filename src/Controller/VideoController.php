@@ -2,15 +2,43 @@
 
 namespace App\Controller;
 
+use DateInterval;
+use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\YoutubeService;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class VideoController extends AbstractController
 {
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws InvalidArgumentException
+     * @throws RedirectionExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws ClientExceptionInterface
+     */
     #[Route('/videos', name: 'app_videos')]
-    public function index(): Response
+    public function index(YoutubeService $youtubeService): Response
     {
-        return $this->render('public/video/index.html.twig');
+        $cache = new FilesystemAdapter();
+        $youtubeVideos = $cache->getItem('youtube_videos');
+
+        if (!$youtubeVideos->isHit()) {
+            $youtubeVideos->set($youtubeService->getLatestVideos());
+            $youtubeVideos->expiresAfter(new DateInterval('PT1H'));
+            $cache->save($youtubeVideos);
+        }
+
+        return $this->render('public/video/index.html.twig', [
+            'youtubeVideos' => $youtubeVideos->get(),
+        ]);
     }
 }

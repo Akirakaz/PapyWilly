@@ -19,8 +19,9 @@ class TwitchScheduleService
         $weekEnd = $weekNow->format('Y-m-d') . 'T23:59:59Z';
 
         $schedule = [];
+        $streams = $upcomingStreams['segments'] ?? [];
 
-        foreach ($upcomingStreams['segments'] as $stream) {
+        foreach ($streams as $stream) {
             $now = new DateTime('now');
 
             $eventStartTime = new DateTime($stream['start_time']);

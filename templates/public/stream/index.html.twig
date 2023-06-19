@@ -77,6 +77,9 @@
                     </div>
                 {% endfor %}
             </div>
+            {% if not schedule %}
+                <p class="text-center text-white text-xl">Aucun stream programmé pour cette semaine.</p>
+            {% endif %}
         </section>
     </main>
 {% endblock %}

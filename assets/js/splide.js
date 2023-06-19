@@ -12,7 +12,7 @@ const splide = new Splide('.splide', {
     resetProgress: false,
     pagination: true,
     arrows: false,
-    cover: true,
+    // cover: true,
     fixedHeight: 500,
     mediaQuery: 'min',
     breakpoints: {

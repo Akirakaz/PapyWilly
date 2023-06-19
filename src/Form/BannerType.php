@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Banner;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -53,6 +54,16 @@ class BannerType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('imgPosition', ChoiceType::class, [
+                'label' => "Centrage de l'image",
+                'required' => true,
+                'choices' => [
+                    'Haut'   => 'img-top',
+                    'Centre' => 'img-center',
+                    'Bas'    => 'img-bottom',
+                ],
+                'data' => $options['is_edit'] ? $options['current_img_position'] : 'img-center',
+            ])
         ;
     }
 
@@ -60,6 +71,8 @@ class BannerType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Banner::class,
+            'is_edit' => false,
+            'current_img_position' => null,
         ]);
     }
 }

@@ -41,3 +41,13 @@
         @apply text-orange-400 ring-orange-500/50;
     }
 }
+
+.img-top {
+    @apply object-top;
+}
+.img-center {
+    @apply object-center;
+}
+.img-bottom {
+    @apply object-bottom;
+}

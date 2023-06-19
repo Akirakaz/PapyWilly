@@ -4,17 +4,24 @@
 ] %}
 
 {{ form_start(form) }}
-    <div class="flex flex-col gap-2 mt-4">
-        {{ form_label(form.altText) }}
-        {{ form_widget(form.altText, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.altText) }}
-    </div>
+<div class="flex flex-col gap-2 mt-4">
+    {{ form_label(form.altText) }}
+    {{ form_widget(form.altText, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+    {{ form_errors(form.altText) }}
+</div>
 
-    <div class="flex flex-col gap-2 mt-4">
+<div class="flex flex-wrap md:flex-nowrap gap-8 w-full">
+    <div class="flex flex-col gap-2 mt-4 w-full md:w-3/4">
         {{ form_label(form.imageFile) }}
         {{ form_widget(form.imageFile, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
         {{ form_errors(form.imageFile) }}
     </div>
+    <div class="flex flex-col gap-2 mt-4 w-full md:w-1/4">
+        {{ form_label(form.imgPosition) }}
+        {{ form_widget(form.imgPosition, {'attr': {'class': 'rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+        {{ form_errors(form.imgPosition) }}
+    </div>
+</div>
 
 <div class="mt-8 flex justify-end gap-4">
     {% if form.saveAndAdd is defined %}

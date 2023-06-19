@@ -16,39 +16,22 @@
 
         <section class="mt-16">
             <div class="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
-                {% for i in 1..2 %}
+                {% for video in youtubeVideos %}
                     <article>
-                        <img class="w-full rounded" src="https://via.placeholder.com/384x223/8f87f0/ffffff?text=Video+1" alt="" data-modalpreview="modal-preview" data-video="BQOcU9TqAkE">
+                        <img class="w-full rounded" src="{{ video.thumbnail }}" alt="{{ video.title }}" data-modalpreview="modal-preview" data-video="{{ video.id }}">
                         <div class="mt-1 flex flex-col gap-4">
-                            <time class="text-sm font-bold text-coral-red-500">August 5, 2022</time>
-                            <h2 class="text-2xl font-bold leading-8 text-white">I’ll be at the next VidCon 2022 in Tokyo unveiling new and exciting gadgets!</h2>
-                            <p class="leading-7 text-gray-400">“Gadget” refers to computer programs that provide services without needing an independent application to be launched for each one, but instead run in an environment that manages multiple
-                                gadgets. There are several implementations based...</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img class="w-full rounded" src="https://via.placeholder.com/384x223/4e9c6d/ffffff?text=Video+2" alt="" data-modalpreview="modal-preview" data-video="f24WPDYjz8o">
-                        <div class="mt-1 flex flex-col gap-4">
-                            <time class="text-sm font-bold text-coral-red-500">August 5, 2022</time>
-                            <h2 class="text-4xl font-bold leading-8 text-white">I’ll be at the next VidCon 2022 in Tokyo unveiling new and exciting gadgets!</h2>
-                            <p class="leading-7 text-gray-400">A gadget is a mechanical device or any ingenious article. Gadgets are sometimes referred to as gizmos. In the software industry, “Gadget” refers to computer programs that provide services
-                                without needing an independent application to be launched for each one, but instead run in an environment that manages multiple gadgets. There are several implementations based...</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img class="w-full rounded" src="https://via.placeholder.com/384x223/ff0000/ffffff?text=Video+3" alt="" data-modalpreview="modal-preview" data-video="6Q7tdD5lJxg">
-                        <div class="mt-1 flex flex-col gap-4">
-                            <time class="text-sm font-bold text-coral-red-500">August 5, 2022</time>
-                            <h2 class="text-4xl font-bold leading-8 text-white">I’ll be at the next VidCon 2022 in Tokyo unveiling new and exciting gadgets!</h2>
-                            <p class="leading-7 text-gray-400">In the software industry, “Gadget” refers to computer programs that provide services without needing an independent application to be launched for each one, but instead run in an
-                                environment that manages multiple gadgets. There are several implementations based...</p>
+                            <time class="text-sm font-bold text-coral-red-500">{{ video.publishedAt|date ('d F Y') }}</time>
+                            <h2 class="text-2xl font-bold leading-8 text-white">{{ video.title }}</h2>
+                            <p class="leading-7 text-gray-400">{{ video.description }}</p>
                         </div>
                     </article>
                 {% endfor %}
             </div>
 
             <div class="mt-16 flex justify-center">
-                <button class="max-w-fit self-center px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">Load more</button>
+                <a href="https://www.youtube.com/@papywillytv3794/videos">
+                    <button class="max-w-fit self-center px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">Load more</button>
+                </a>
             </div>
         </section>
 

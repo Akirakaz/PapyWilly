@@ -29,6 +29,9 @@ class Banner
     #[ORM\Column(nullable: true)]
     private ?string $banner = null;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $imgPosition = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,5 +82,17 @@ class Banner
     public function getBanner(): ?string
     {
         return $this->banner;
+    }
+
+    public function getImgPosition(): ?string
+    {
+        return $this->imgPosition;
+    }
+
+    public function setImgPosition(?string $imgPosition): self
+    {
+        $this->imgPosition = $imgPosition;
+
+        return $this;
     }
 }

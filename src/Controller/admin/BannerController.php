@@ -52,7 +52,11 @@ class BannerController extends AbstractController
     #[Route('/{id}/edit', name: 'app_admin_banner_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Banner $banner, BannerRepository $bannerRepository): Response
     {
-        $form = $this->createForm(BannerType::class, $banner);
+        $form = $this->createForm(BannerType::class, $banner, [
+            'is_edit' => true,
+            'current_img_position' => $banner->getImgPosition(),
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

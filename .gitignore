@@ -1,8 +1,12 @@
-/.idea
-/public/images/
-.yarnrc.yml
+/.idea/
 /.yarn/
+/public/images/
+
+/Makefile
+/package-lock.json
+/.yarnrc.yml
 *.DS_Store
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -17,9 +21,12 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+
 ###> pentatrion/vite-bundle ###
 /node_modules/
 /public/build/
 ###< pentatrion/vite-bundle ###
-/Makefile
-/package-lock.json
+
+###> liip/imagine-bundle ###
+/public/cache/
+###< liip/imagine-bundle ###

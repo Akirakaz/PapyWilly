@@ -24,7 +24,7 @@
                     <p class="mt-8 text-right text-3xl font-semibold text-white lg:mt-8">{{ SITE_NAME }}</p>
                 </div>
                 <div class="hidden mx-auto w-full max-w-screen-sm lg:w-1/3 lg:flex">
-                    <img class="rounded object-cover object-center" src="{{ vich_uploader_asset(settings) }}" alt="Photo pour illustrer la section à propos.">
+                    <img class="rounded object-cover object-center" src="{{ vich_uploader_asset(settings, 'imageFile') | imagine_filter('settings') }}" alt="Photo pour illustrer la section à propos.">
                 </div>
             </section>
         {% endif %}

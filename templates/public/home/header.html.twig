@@ -3,7 +3,7 @@
         <ul class="splide__list">
             {% for banner in banners %}
             <li class="splide__slide">
-                <img class="w-full h-full object-cover object-center" src="{{ vich_uploader_asset(banner) }}" alt="{{ banner.altText }}">
+                <img class="w-full h-full object-cover {{ banner.imgPosition }}" src="{{ vich_uploader_asset(banner, 'imageFile') | imagine_filter('banners') }}" alt="{{ banner.altText }}">
             </li>
             {% endfor %}
         </ul>

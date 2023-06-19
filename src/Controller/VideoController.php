@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\SettingsRepository;
 use DateInterval;
+use Doctrine\ORM\NonUniqueResultException;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
@@ -24,9 +26,10 @@ class VideoController extends AbstractController
      * @throws RedirectionExceptionInterface
      * @throws DecodingExceptionInterface
      * @throws ClientExceptionInterface
+     * @throws NonUniqueResultException
      */
     #[Route('/videos', name: 'app_videos')]
-    public function index(YoutubeService $youtubeService): Response
+    public function index(YoutubeService $youtubeService, SettingsRepository $settingsRepository): Response
     {
         $cache = new FilesystemAdapter();
         $youtubeVideos = $cache->getItem('youtube_videos');
@@ -39,6 +42,7 @@ class VideoController extends AbstractController
 
         return $this->render('public/video/index.html.twig', [
             'youtubeVideos' => $youtubeVideos->get(),
+            'settings' => $settingsRepository->getSettings(),
         ]);
     }
 }

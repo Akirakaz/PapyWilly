@@ -6,10 +6,10 @@
     <main class="mx-auto max-w-screen-xl p-8">
         <div class="mt-20 flex w-full justify-center">
             <h1 class="text-center">
-                <span class="block text-xl font-medium uppercase text-coral-red-500">Keep watching</span>
+                <span class="block text-xl font-medium uppercase text-coral-red-500">Regardez</span>
                 <span class="flex text-6xl font-bold uppercase text-white md:text-7xl">
                     <svg class="mr-2 w-2 self-end mb-3.5 fill-coral-red-500" fill="none" viewBox="0 0 11 11"><path d="M.81.31h10v10h-10z"/></svg>
-                    My videos
+                    Mes vidéos
                 </span>
             </h1>
         </div>
@@ -20,7 +20,7 @@
                     <article>
                         <img class="w-full rounded" src="{{ video.thumbnail }}" alt="{{ video.title }}" data-modalpreview="modal-preview" data-video="{{ video.id }}">
                         <div class="mt-1 flex flex-col gap-4">
-                            <time class="text-sm font-bold text-coral-red-500">{{ video.publishedAt|date ('d F Y') }}</time>
+                            <time class="text-sm font-bold text-coral-red-500">{{ video.publishedAt|date ('d F Y', "Europe/Paris")|format_datetime(pattern="d MMMM Y", locale='fr') }}</time>
                             <h2 class="text-2xl font-bold leading-8 text-white">{{ video.title }}</h2>
                             <p class="leading-7 text-gray-400">{{ video.description }}</p>
                         </div>
@@ -29,8 +29,8 @@
             </div>
 
             <div class="mt-16 flex justify-center">
-                <a href="https://www.youtube.com/@papywillytv3794/videos">
-                    <button class="max-w-fit self-center px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">Load more</button>
+                <a href="{{settings.youtubeChannel}}" target="_blank" rel="noreferrer nofollow noopener">
+                    <button class="max-w-fit self-center px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">Voir plus de vidéos</button>
                 </a>
             </div>
         </section>

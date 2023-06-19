@@ -15,9 +15,6 @@ class YoutubeService
 {
     private $httpClient;
     private array $parameters;
-//    private $cacheService;
-//    private $channelId;
-//    private $apiKey;
 
     public function __construct(HttpClientInterface $httpClient, ParameterBagInterface $parameterBag)
     {
@@ -26,9 +23,6 @@ class YoutubeService
             'apiKey' => $parameterBag->get('app.youtube_api_key'),
             'channelId' => $parameterBag->get('app.youtube_channel_id'),
         ];
-//        $this->cacheService = $cacheService;
-//        $this->apiKey = $apiKey;
-//        $this->channelId= $channelId;
     }
 
     /**
@@ -38,7 +32,7 @@ class YoutubeService
      * @throws DecodingExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function requestYoutube(int $limit = 6): array
+    public function requestYoutube(int $limit = 12): array
     {
         $response = $this->httpClient->request('GET', 'https://www.googleapis.com/youtube/v3/search', [
             'query' => [
@@ -61,9 +55,9 @@ class YoutubeService
      * @throws DecodingExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function getLatestVideos(int $limit = 6): array
+    public function getLatestVideos(): array
     {
-        $data = $this->requestYoutube($limit);
+        $data = $this->requestYoutube();
 
         $videos = [];
 

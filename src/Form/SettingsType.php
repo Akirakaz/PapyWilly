@@ -27,7 +27,7 @@ class SettingsType extends AbstractType
                 'required' => false,
                 'label' => 'Chaine Youtube',
                 'attr' => [
-                    'placeholder' => 'ID de chaine',
+                    'placeholder' => 'url de chaine',
                 ],
             ])
             ->add('aboutTitle', TextType::class, [

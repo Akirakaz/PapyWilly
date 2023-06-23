@@ -10,16 +10,16 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class YoutubeService
+class YoutubeAPIService
 {
-    private $httpClient;
+    private       $httpClient;
     private array $parameters;
 
     public function __construct(HttpClientInterface $httpClient, ParameterBagInterface $parameterBag)
     {
         $this->httpClient = $httpClient;
         $this->parameters = [
-            'apiKey' => $parameterBag->get('app.youtube_api_key'),
+            'apiKey'    => $parameterBag->get('app.youtube_api_key'),
             'channelId' => $parameterBag->get('app.youtube_channel_id'),
         ];
     }
@@ -35,12 +35,12 @@ class YoutubeService
     {
         $response = $this->httpClient->request('GET', 'https://www.googleapis.com/youtube/v3/search', [
             'query' => [
-                'part' => 'snippet',
-                'channelId' => $this->parameters['channelId'],
+                'part'       => 'snippet',
+                'channelId'  => $this->parameters['channelId'],
                 'maxResults' => $limit,
-                'order' => 'date',
-                'type' => 'video',
-                'key' => $this->parameters['apiKey'],
+                'order'      => 'date',
+                'type'       => 'video',
+                'key'        => $this->parameters['apiKey'],
             ],
         ]);
 
@@ -63,10 +63,10 @@ class YoutubeService
         foreach ($data['items'] as $item) {
             $id = $item['id']['videoId'];
             $videos[] = [
-                'id' => $id,
-                'title' => $item['snippet']['title'],
+                'id'          => $id,
+                'title'       => $item['snippet']['title'],
                 'description' => $item['snippet']['description'],
-                'thumbnail' => "https://i.ytimg.com/vi/$id/sddefault.jpg",
+                'thumbnail'   => "https://i.ytimg.com/vi/$id/sddefault.jpg",
                 'publishedAt' => $item['snippet']['publishedAt'],
             ];
         }

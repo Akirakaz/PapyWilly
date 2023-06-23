@@ -2,3 +2,5 @@ parameters:
   app.twitch_client_id: '%env(TWITCH_PUBLIC_KEY)%'
   app.twitch_client_secret: '%env(TWITCH_SECRET_KEY)%'
   app.twitch_channel_id: '%env(TWITCH_CHANNEL_ID)%'
+  app.youtube_api_key: '%env(YOUTUBE_API_KEY)%'
+  app.youtube_channel_id: '%env(YOUTUBE_CHANNEL_ID)%'

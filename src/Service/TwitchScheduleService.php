@@ -55,8 +55,8 @@ class TwitchScheduleService
                     ];
                 }
 
-                $vacationStartTime = new DateTime($upcomingStreams['vacation']['start_time']);
-                $vacationEndTime = new DateTime($upcomingStreams['vacation']['end_time']);
+                $vacationStartTime = isset($upcomingStreams['vacation']) ? new DateTime($upcomingStreams['vacation']['start_time']) : null;
+                $vacationEndTime = isset($upcomingStreams['vacation']) ? new DateTime($upcomingStreams['vacation']['end_time']) : null;
 
                 if ($eventStartTime >= $vacationStartTime && $eventStartTime <= $vacationEndTime) {
                     $eventStatus = [
@@ -69,12 +69,15 @@ class TwitchScheduleService
                     $schedule[$eventDate] = [];
                 }
 
+                $categoryName = isset($stream['category']) ? $stream['category']['name'] : null;
+                $thumbnailUrl = isset($stream['category']) ? 'https://static-cdn.jtvnw.net/ttv-boxart/' . $stream['category']['id'] . '-192x256.jpg' : null;
+
                 $schedule[$eventDate][$eventTime] = [
                     'title' => $stream['title'],
-                    'category' => $stream['category']['name'],
+                    'category' => $categoryName,
                     'start_time' => $eventStartTime,
                     'end_time' => $eventEndTime,
-                    'thumbnail_url' => 'https://static-cdn.jtvnw.net/ttv-boxart/' . $stream['category']['id'] . '-192x256.jpg',
+                    'thumbnail_url' => $thumbnailUrl,
                     'status' => $eventStatus,
                 ];
             }

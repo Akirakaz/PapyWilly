@@ -1,0 +1,14 @@
+{% extends 'public/base.html.twig' %}
+
+{% block body %}
+    <main class="grow flex justify-center px-4">
+        <div class="self-center flex flex-col w-full">
+            <h1 class="text-white text-5xl self-center font-extrabold">Erreur 403</h1>
+            <h2 class="text-white text-3xl self-center font-bold mt-8">Vous avez atteint les limites de notre royaume numérique.</h2>
+            <h2 class="text-white text-2xl self-center font-semibold">Il serait bon de faire marche arrière !</h2>
+            <div class="self-center mt-16">
+                <a class="max-w-fit px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700" href="{{ path('app_home') }}">Retour accueil</a>
+            </div>
+        </div>
+    </main>
+{% endblock %}

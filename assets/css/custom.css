@@ -28,15 +28,19 @@
     &-green {
         @apply text-green-400 ring-green-500/50;
     }
+
     &-blue {
         @apply text-sky-400 ring-sky-500/50;
     }
+
     &-red {
         @apply text-red-500 ring-red-500/50;
     }
+
     &-yellow {
         @apply text-yellow-500 ring-yellow-500/50;
     }
+
     &-orange {
         @apply text-orange-400 ring-orange-500/50;
     }
@@ -45,9 +49,68 @@
 .img-top {
     @apply object-top;
 }
+
 .img-center {
     @apply object-center;
 }
+
 .img-bottom {
     @apply object-bottom;
+}
+
+.animate {
+    .ani-bounce-1 {
+        animation: bounce-1 4s ease-in-out infinite;
+        transform-origin: center center;
+    }
+
+    .ani-bounce-2 {
+        animation: bounce-2 3.5s ease-in-out infinite;
+        transform-origin: center center;
+    }
+
+    .ani-rotate-1 {
+        animation: rotate-1 4s ease-in-out infinite;
+        transform-origin: center center;
+    }
+
+    .ani-rotate-2 {
+        animation: rotate-2 4s ease-in-out infinite;
+        transform-origin: center;
+    }
+
+    @keyframes rotate-1 {
+        0%, 100% {
+            transform: rotate(30deg);
+        }
+        50% {
+            transform: rotate(0deg);
+        }
+    }
+    @keyframes rotate-2 {
+        0%, 100% {
+            transform: rotate(0deg) translateY(-0.8rem);
+
+        }
+        50% {
+            transform: rotate(-10deg) translateY(-0.8rem);
+        }
+    }
+    @keyframes bounce-2 {
+        0%, 100% {
+            transform: translateY(0.7rem) rotate(5deg);
+
+        }
+        50% {
+            transform: translateY(-1rem);
+        }
+    }
+    @keyframes bounce-1 {
+        0%, 100% {
+            transform: translateY(0.6rem) rotate(-5deg);
+        }
+        50% {
+            transform: translateY(-0.8rem) rotate(10deg);
+        }
+    }
 }

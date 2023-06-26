@@ -64,7 +64,11 @@
                         <div class="flex w-full flex-col gap-8">
                             {% for event in events %}
                                 <div class="flex w-full gap-8">
-                                    <img class="w-24 h-32" src="{{ event.thumbnail_url }}" alt="">
+                                    {% if not event.thumbnail_url %}
+                                        <img class="w-24 h-32" src="{{ asset('assets/img/404_boxart.webp') }}" alt="404 Cover not found">
+                                    {% else %}
+                                        <img class="w-24 h-32" src="{{ event.thumbnail_url }}" alt="{{ event.category }}">
+                                    {% endif %}
                                     <div>
                                         <p class="font-bold uppercase text-coral-red-500">{{ event.category }}</p>
                                         <p class="text-white">{{ event.title }}</p>

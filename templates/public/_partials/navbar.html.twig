@@ -26,7 +26,7 @@
             <menu class="hidden gap-6 text-lg font-semibold uppercase text-white lg:flex">
                 {% for network in socialNetworks() %}
                     <li>
-                        <a href="{{ network.url }}" title="{{ network.alt }}">
+                        <a href="{{ network.url }}" title="{{ network.alt }}" target="_blank" rel="noreferrer nofollow noopener">
                             <i class="icon {{ network.icon }} text-2xl text-slate-100 hover:text-red-500 transition"></i>
                         </a>
                     </li>
@@ -63,7 +63,7 @@
                 <ul class="flex flex-wrap justify-center gap-8 py-4 mt-8">
                     {% for network in socialNetworks() %}
                         <li>
-                            <a href="{{ network.url }}" title="{{ network.alt }}">
+                            <a href="{{ network.url }}" title="{{ network.alt }}" target="_blank" rel="noreferrer nofollow noopener">
                                 <i class="icon {{ network.icon }} text-2xl text-slate-100 hover:text-red-500 transition"></i>
                             </a>
                         </li>

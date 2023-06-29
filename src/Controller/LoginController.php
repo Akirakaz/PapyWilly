@@ -14,6 +14,10 @@ class LoginController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_admin_dashboard');
+        }
+
         $form = $this->createForm(LoginType::class);
 
         $lastUsername = $authenticationUtils->getLastUsername();

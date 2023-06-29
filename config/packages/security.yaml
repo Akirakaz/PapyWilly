@@ -26,8 +26,6 @@ security:
                 secret:   '%kernel.secret%'
                 lifetime: 86400 # 1 week in seconds
                 path: /
-                token_provider:
-                    doctrine: true
             logout:
                 path: app_logout
                 target: app_logout_success

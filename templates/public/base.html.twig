@@ -3,7 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{{ SITE_NAME }} - {% block meta_title %}{% endblock %}{% endblock %}</title>
+        <meta name="description" content="{% block meta_description %}{{ SITE_NAME }}{% endblock %}">
+        <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
+        <link rel="canonical" href="{% block url_canonical %}{{ app.request.getSchemeAndHttpHost ~ app.request.pathInfo }}{% endblock %}">
+        <meta property="og:locale" content="{% block meta_og_locale %}fr{% endblock %}">
+        <meta property="og:type" content="{% block meta_og_type %}website{% endblock %}">
+        <meta property="og:title" content="{{ block('title') }}">
+        <meta property="og:description" content="{{ block('meta_description') }}">
+        <meta property="og:url" content="{{ block('url_canonical') }}">
+        <meta property="og:site_name" content="{{ SITE_NAME }}">
+        <meta property="og:image" content="{% block meta_image %}{{ app.request.getSchemeAndHttpHost ~ asset('assets/img/PapyWillyOG.webp') }}{% endblock %}">
         <link rel="icon" href="{{ asset('assets/img/favicon.svg') }}" type="image/svg+xml">
 
         {% block stylesheets %}

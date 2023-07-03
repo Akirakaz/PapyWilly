@@ -1,8 +1,8 @@
 pentatrion_vite:
   # Base public path when served in development or production
-  base: /build/
+  build_directory: /build/
   # path to the web root relative to the Symfony project root directory
-  public_dir: /public
+  public_directory: /public
 
   script_attributes:
   # you can define your attributes that you want to apply

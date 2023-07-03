@@ -3,7 +3,7 @@
 namespace App\Events;
 
 use App\Entity\SocialNetwork;
-use Doctrine\Bundle\DoctrineBundle\EventSubscriber\EventSubscriberInterface;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\ORM\Event\PostPersistEventArgs;
 use Doctrine\ORM\Event\PostRemoveEventArgs;
 use Doctrine\ORM\Event\PostUpdateEventArgs;
@@ -11,21 +11,16 @@ use Doctrine\ORM\Events;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-class SocialNetworkSubscriber implements EventSubscriberInterface
+#[AsDoctrineListener(event: Events::postPersist, priority: 500, connection: 'default')]
+#[AsDoctrineListener(event: Events::postUpdate, priority: 500, connection: 'default')]
+#[AsDoctrineListener(event: Events::postRemove, priority: 500, connection: 'default')]
+class SocialNetworkSubscriber
 {
     private FilesystemAdapter $cache;
 
     public function __construct()
     {
         $this->cache = new FilesystemAdapter();
-    }
-    public function getSubscribedEvents(): array
-    {
-        return [
-            Events::postPersist,
-            Events::postUpdate,
-            Events::postRemove,
-        ];
     }
 
     /**

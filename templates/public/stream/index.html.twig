@@ -17,8 +17,8 @@
 
         <section class="mt-16">
             <iframe class="aspect-video"
-                    src="https://player.twitch.tv/?channel={{ twitchChannel }}&parent=localhost&autoplay=false"
-                    parent="localhost"
+                    src="https://player.twitch.tv/?channel={{ twitchChannel }}&parent={{ app.request.getHttpHost }}&autoplay=false"
+                    parent="{{ app.request.getHttpHost }}"
                     width="100%"
                     allowfullscreen
             >
@@ -29,7 +29,7 @@
             <div x-show="chat" class="fixed right-8 bottom-8 z-1">
                 <span @click="chat = false" class="cursor-pointer text-white">Fermer</span>
                 <iframe class="mt-1"
-                        src="https://www.twitch.tv/embed/{{ twitchChannel }}/chat?parent=localhost"
+                        src="https://www.twitch.tv/embed/{{ twitchChannel }}/chat?parent={{ app.request.getHttpHost }}"
                         height="555"
                         width="100%">
                 </iframe>

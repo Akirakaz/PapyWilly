@@ -5,6 +5,10 @@
             <li class="splide__slide">
                 <img class="w-full h-full object-cover {{ banner.imgPosition }}" src="{{ vich_uploader_asset(banner, 'imageFile') | imagine_filter('banners') }}" alt="{{ banner.altText }}">
             </li>
+            {% else %}
+            <li class="splide__slide">
+                <img class="w-full h-full object-cover" src="https://via.placeholder.com/1920x1080/FF4654/000000" alt="Image placeholder">
+            </li>
             {% endfor %}
         </ul>
     </div>

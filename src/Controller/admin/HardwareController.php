@@ -6,6 +6,7 @@ use App\Entity\Hardware;
 use App\Form\HardwareType;
 use App\Repository\HardwareRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,17 +27,24 @@ class HardwareController extends AbstractController
     {
         $hardware = new Hardware();
         $form = $this->createForm(HardwareType::class, $hardware);
+
+        $form->add('saveAndAdd', SubmitType::class, ['label' => 'Ajouter un autre']);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $hardwareRepository->save($hardware, true);
 
+            $nextAction = $form->get('saveAndAdd')->isClicked()
+                ? 'app_admin_hardware_new'
+                : 'app_admin_hardware_index';
+
             $this->addFlash('succès', "Le matériel a bien été enregistré.");
 
-            return $this->redirectToRoute('app_admin_hardware_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute($nextAction);
         }
 
-        return $this->renderForm('admin/hardware/new.html.twig', [
+        return $this->render('admin/hardware/new.html.twig', [
             'hardware' => $hardware,
             'form' => $form,
         ]);
@@ -56,7 +64,7 @@ class HardwareController extends AbstractController
             return $this->redirectToRoute('app_admin_hardware_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/hardware/edit.html.twig', [
+        return $this->render('admin/hardware/edit.html.twig', [
             'hardware' => $hardware,
             'form' => $form,
         ]);

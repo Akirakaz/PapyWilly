@@ -4,39 +4,41 @@
 
 {% block body %}
     <main class="mx-auto w-full max-w-7xl flex-grow px-4 pt-20">
-
         <h1 class="my-8 text-3xl">Dashboard d'administration</h1>
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div class="relative h-52 rounded bg-cover bg-center p-4 shadow transition hover:shadow-lg group hover:bg-auto"
-                 style=" background-image: url('{{ asset('assets/img/hardware.png') }}')"
-            >
-                <div class="absolute inset-0 bg-blue-100/80 transition group-hover:bg-blue-200/50"></div>
-                <a href="{{ path('app_admin_hardware_index') }}" class="group-hover:bg-red-600">
-                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
-                        <p class="text-xl font-semibold">Gestion du setup</p>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
+            <div class="relative h-52 rounded bg-right bg-no-repeat shadow transition duration-300 group hover:shadow-lg" style=" background-image: url({{ asset('assets/img/dashboard_hardware.svg') }})">
+                <div class="absolute inset-0 rounded bg-blue-100/90 transition duration-300 z-1 group-hover:bg-blue-100/80"></div>
+                <a href="{{ path('app_admin_hardware_index') }}">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-4 z-2">
+                        <p class="text-2xl font-semibold">Matériel</p>
                     </div>
                 </a>
             </div>
-            <div class="relative h-52 rounded bg-cover bg-center p-4 shadow transition hover:shadow-lg group hover:bg-auto"
-                 style="background-image: url('{{ asset('assets/img/social-network.png') }}')"
-            >
-                <div class="absolute inset-0 bg-blue-100/80 transition group-hover:bg-blue-200/50"></div>
+            <div class="relative h-52 rounded bg-right bg-no-repeat shadow transition duration-300 group hover:shadow-lg" style="background-image: url('{{ asset('assets/img/dashboard_socials.svg') }}')">
+                <div class="absolute inset-0 rounded bg-blue-100/90 transition duration-300 z-1 group-hover:bg-blue-100/80"></div>
                 <a href="{{ path('app_admin_social_network_index') }}">
-                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
-                        <p class="text-xl font-semibold">Gestion des réseaux sociaux</p>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-4 z-2">
+                        <p class="text-2xl font-semibold">Réseaux sociaux</p>
                     </div>
                 </a>
             </div>
-            <div class="relative h-52 rounded bg-cover bg-center p-4 shadow transition hover:shadow-lg group hover:bg-auto"
-                 style="background-image: url('{{ asset('assets/img/roue.webp') }}')"
-            >
-                <div class="absolute inset-0 bg-blue-100/80 transition group-hover:bg-blue-200/50"></div>
+            <div class="relative h-52 rounded bg-right bg-no-repeat shadow transition duration-300 group hover:shadow-lg" style="background-image: url('{{ asset('assets/img/dashboard_banners.svg') }}')">
+                <div class="absolute inset-0 rounded bg-blue-100/90 transition duration-300 z-1 group-hover:bg-blue-100/80"></div>
+                <a href="{{ path('app_admin_banner_index') }}">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-4 z-2">
+                        <p class="text-2xl font-semibold">Bannières</p>
+                    </div>
+                </a>
+            </div>
+            <div class="relative h-52 rounded bg-right bg-no-repeat shadow transition duration-300 group hover:shadow-lg" style="background-image: url('{{ asset('assets/img/dashboard_cogs.svg') }}')">
+                <div class="absolute inset-0 rounded bg-blue-100/90 transition duration-300 z-1 group-hover:bg-blue-100/80"></div>
                 <a href="{{ path('app_admin_settings_index') }}">
-                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
-                        <p class="text-xl font-semibold">Parametres du site</p>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-4 z-2">
+                        <p class="text-2xl font-semibold">Parametres du site</p>
                     </div>
                 </a>
             </div>
         </div>
     </main>
 {% endblock %}
+

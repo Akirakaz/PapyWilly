@@ -10,7 +10,8 @@
     {{ parent() }}
 {% endblock %}
 
-{% block title %}Home{% endblock %}
+{% block meta_title %}Accueil{% endblock %}
+{% block meta_description %}Plongez dans mon univers captivant de gaming et de divertissement en ligne! Suivez mes aventures épiques et hilarantes sur Twitch et YouTube et mes autres réseaux sociaux, où je partage mes moments de gaming, mes analyses, et mon humour décalé. Découvrez des streams en direct, des vidéos de haute qualité et une communauté engagée. Rejoignez-moi et laissez-vous emporter dans une expérience interactive unique et divertissante !{% endblock %}
 
 {% block body %}
     {% include 'public/home/header.html.twig' with { 'banners': banners } %}

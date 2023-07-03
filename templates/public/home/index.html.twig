@@ -64,17 +64,23 @@
                                     </div>
                                 </div>
                                 <div class="flex w-full justify-end md:w-fit">
-                                    <a class="max-w-fit px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700" href="{{ hardware.url }}">Acheter!</a>
+                                    <a class="max-w-fit px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700" href="{{ hardware.url }}" target="_blank" rel="nofollow noopener noreferrer">Voir</a>
                                 </div>
+                            </div>
+                        {% else %}
+                            <div class="flex w-full max-w-2xl justify-center">
+                                <p class="text-white">Aucun matériel pour le moment.</p>
                             </div>
                         {% endfor %}
                     </div>
+                    {% if (hardwares|length > 4) %}
                     <div class="mt-2 flex cursor-pointer justify-center border-t-4 border-mirage-200" @click="hardwareExpanded = ! hardwareExpanded">
                         <svg class="w-16 fill-white" viewBox="0 0 20 20">
                             <path x-show="!hardwareExpanded" fill-rule="evenodd" d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z"/>
                             <path x-show="hardwareExpanded" fill-rule="evenodd" d="M14.707 12.707a1 1 0 0 1-1.414 0L10 9.414l-3.293 3.293a1 1 0 0 1-1.414-1.414l4-4a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1 0 1.414z"/>
                         </svg>
                     </div>
+                    {% endif %}
                 </div>
             </section>
 

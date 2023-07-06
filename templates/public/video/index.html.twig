@@ -38,7 +38,7 @@
                 {% endfor %}
             </div>
 
-            {% if settings.youtubeChannel %}
+            {% if settings.youtubeChannel is defined %}
             <div class="mt-16 flex justify-center">
                 <a href="{{ settings.youtubeChannel }}" target="_blank" rel="noreferrer nofollow noopener">
                     <button class="flex max-w-fit gap-2 self-center px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">

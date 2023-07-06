@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
@@ -405,6 +405,30 @@
         <source>The value of the netmask should be between {{ min }} and {{ max }}.</source>
         <target>La valeur du masque de réseau doit être comprise entre {{ min }} et {{ max }}.</target>
       </trans-unit>
+      <trans-unit id="O5pay9e" resname="The filename is too long. It should have {{ filename_max_length }} character or less.|The filename is too long. It should have {{ filename_max_length }} characters or less.">
+        <source>The filename is too long. It should have {{ filename_max_length }} character or less.|The filename is too long. It should have {{ filename_max_length }} characters or less.</source>
+        <target>Le nom du fichier est trop long. Il doit contenir au maximum {{ filename_max_length }} caractère.|Le nom de fichier est trop long. Il doit contenir au maximum {{ filename_max_length }} caractères.</target>
+      </trans-unit>
+      <trans-unit id="f_lviDt" resname="The password strength is too low. Please use a stronger password.">
+        <source>The password strength is too low. Please use a stronger password.</source>
+        <target>La force du mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.</target>
+      </trans-unit>
+      <trans-unit id="xfCh6.k" resname="This value contains characters that are not allowed by the current restriction-level.">
+        <source>This value contains characters that are not allowed by the current restriction-level.</source>
+        <target>Cette valeur contient des caractères qui ne sont pas autorisés par le niveau de restriction actuel.</target>
+      </trans-unit>
+      <trans-unit id="x15dlan" resname="Using invisible characters is not allowed.">
+        <source>Using invisible characters is not allowed.</source>
+        <target>Utiliser des caractères invisibles n'est pas autorisé.</target>
+      </trans-unit>
+      <trans-unit id="2NiS4YC" resname="Mixing numbers from different scripts is not allowed.">
+        <source>Mixing numbers from different scripts is not allowed.</source>
+        <target>Mélanger des chiffres provenant de différents scripts n'est pas autorisé.</target>
+      </trans-unit>
+      <trans-unit id="W8N1HuG" resname="Using hidden overlay characters is not allowed.">
+        <source>Using hidden overlay characters is not allowed.</source>
+        <target>Utiliser des caractères de superposition cachés n'est pas autorisé.</target>
+      </trans-unit>
       <trans-unit id=".SEaaBa" resname="This form should not contain extra fields.">
         <source>This form should not contain extra fields.</source>
         <target>Ce formulaire ne doit pas contenir de champs supplémentaires.</target>
@@ -537,21 +561,61 @@
         <source>Please enter a valid week.</source>
         <target>Veuillez entrer une semaine valide.</target>
       </trans-unit>
+      <trans-unit id="hfn9CTW" resname="L'adresse email n'est pas valide">
+        <source>L'adresse email n'est pas valide</source>
+        <target>L'adresse email n'est pas valide</target>
+      </trans-unit>
+      <trans-unit id=".o2Y8pu" resname="Votre mot de passe doit contenir au moins {{ limit }} caractères.">
+        <source>Votre mot de passe doit contenir au moins {{ limit }} caractères.</source>
+        <target>Votre mot de passe doit contenir au moins {{ limit }} caractères.</target>
+      </trans-unit>
+      <trans-unit id="CcYaVyg" resname="Veuillez renseigner une marque">
+        <source>Veuillez renseigner une marque</source>
+        <target>Veuillez renseigner une marque</target>
+      </trans-unit>
+      <trans-unit id="nylUTma" resname="Veuillez renseigner un modèle">
+        <source>Veuillez renseigner un modèle</source>
+        <target>Veuillez renseigner un modèle</target>
+      </trans-unit>
+      <trans-unit id="a_jghP9" resname="Veuillez renseigner une url valide">
+        <source>Veuillez renseigner une url valide</source>
+        <target>Veuillez renseigner une url valide</target>
+      </trans-unit>
+      <trans-unit id="ophg_NX" resname="Veuillez renseigner un type de matériel">
+        <source>Veuillez renseigner un type de matériel</source>
+        <target>Veuillez renseigner un type de matériel</target>
+      </trans-unit>
       <trans-unit id="lT1_rbv" resname="Le texte d'affichage ne peut pas dépasser {{ limit }} caractères">
         <source>Le texte d'affichage ne peut pas dépasser {{ limit }} caractères</source>
-        <target>__Le texte d'affichage ne peut pas dépasser {{ limit }} caractères</target>
+        <target>Le texte d'affichage ne peut pas dépasser {{ limit }} caractères</target>
       </trans-unit>
       <trans-unit id="FiyP1F3" resname="L'url n'est pas valide">
         <source>L'url n'est pas valide</source>
-        <target>__L'url n'est pas valide</target>
+        <target>L'url n'est pas valide</target>
       </trans-unit>
       <trans-unit id="PHHBE8t" resname="L'url ne peut pas dépasser {{ limit }} caractères">
         <source>L'url ne peut pas dépasser {{ limit }} caractères</source>
-        <target>__L'url ne peut pas dépasser {{ limit }} caractères</target>
+        <target>L'url ne peut pas dépasser {{ limit }} caractères</target>
+      </trans-unit>
+      <trans-unit id="rGm6mnW" resname="Le texte alternatif ne doit pas dépasser {{ limit }} caractères">
+        <source>Le texte alternatif ne doit pas dépasser {{ limit }} caractères</source>
+        <target>Le texte alternatif ne doit pas dépasser {{ limit }} caractères</target>
       </trans-unit>
       <trans-unit id="Fe2zEyl" resname="Please enter your email">
         <source>Please enter your email</source>
-        <target>__Please enter your email</target>
+        <target>Veuillez saisir votre adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="pC03vNr" resname="L'adresse email n'est pas valide.">
+        <source>L'adresse email n'est pas valide.</source>
+        <target>L'adresse email n'est pas valide.</target>
+      </trans-unit>
+      <trans-unit id="VXaURji" resname="Ce mot de passe a été divulgué lors d'une fuite de données, il ne doit plus être utilisé. Veuillez utiliser un autre mot de passe.">
+        <source>Ce mot de passe a été divulgué lors d'une fuite de données, il ne doit plus être utilisé. Veuillez utiliser un autre mot de passe.</source>
+        <target>Ce mot de passe a été divulgué lors d'une fuite de données, il ne doit plus être utilisé. Veuillez utiliser un autre mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="tiGnOPX" resname="La force du mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.">
+        <source>La force du mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.</source>
+        <target>La force du mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.</target>
       </trans-unit>
     </body>
   </file>

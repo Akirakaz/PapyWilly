@@ -14,6 +14,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
+use Symfony\Component\Validator\Constraints\PasswordStrength;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -27,7 +28,7 @@ class UserRegisterCommand extends Command
     private EntityManagerInterface      $entityManager;
     private ValidatorInterface          $validator;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager,string $name = null)
+    public function __construct(UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager, string $name = null)
     {
         $this->entityManager = $entityManager;
         $this->passwordHasher = $passwordHasher;
@@ -51,7 +52,7 @@ class UserRegisterCommand extends Command
                 '██║     ██║  ██║██║        ██║   ╚███╔███╔╝██║███████╗███████╗██║   ',
                 '╚═╝     ╚═╝  ╚═╝╚═╝        ╚═╝    ╚══╝╚══╝ ╚═╝╚══════╝╚══════╝╚═╝   ',
                 '</>',
-           ]
+            ]
         );
 
         /**
@@ -73,7 +74,7 @@ class UserRegisterCommand extends Command
 
         $emailConstraints[] = $this->validator->validate($inputEmail, [
             new Email([
-                'message' => 'L\'adresse email n\'est pas valide',
+                'message' => "L'adresse email n'est pas valide.",
             ]),
         ]);
 
@@ -90,10 +91,16 @@ class UserRegisterCommand extends Command
 
         $passwordConstraints[] = $this->validator->validate($inputPassword, [
             new Length([
-                'min' => 8,
-                'minMessage' => "Votre mot de passe doit contenir au moins 8 caractères."
+                'min'        => 8,
+                'minMessage' => "Votre mot de passe doit contenir au moins {{ limit }} caractères."
             ]),
-            new NotCompromisedPassword(['message' => "Mot de passe compromis, veuillez en choisir un autre."])
+            new NotCompromisedPassword([
+                'message' => "Ce mot de passe a été divulgué lors d'une fuite de données, il ne doit plus être utilisé. Veuillez utiliser un autre mot de passe.",
+            ]),
+            new PasswordStrength([
+                'minScore' => PasswordStrength::STRENGTH_WEAK,
+                'message'  => 'La force du mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.'
+            ])
         ]);
 
         $this->displayViolations($passwordConstraints, $io);

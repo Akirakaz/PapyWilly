@@ -22,9 +22,6 @@ class Settings
     private ?string $settingKey = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $twitchChannel = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $youtubeChannel = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -58,18 +55,6 @@ class Settings
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTwitchChannel(): ?string
-    {
-        return $this->twitchChannel;
-    }
-
-    public function setTwitchChannel(?string $twitchChannel): self
-    {
-        $this->twitchChannel = $twitchChannel;
-
-        return $this;
     }
 
     public function getYoutubeChannel(): ?string

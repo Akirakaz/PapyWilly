@@ -7,10 +7,10 @@
     <main class="mx-auto max-w-screen-xl p-8">
         <div class="mt-20 flex w-full justify-center">
             <h1 class="text-center">
-                <span class="block text-xl font-medium uppercase text-coral-red-500">Regardez</span>
+                <span class="block text-xl font-medium uppercase text-coral-red-500">Mes dernières</span>
                 <span class="flex text-6xl font-bold uppercase text-white md:text-7xl">
                     <svg class="mr-2 w-2 self-end mb-3.5 fill-coral-red-500" fill="none" viewBox="0 0 11 11"><path d="M.81.31h10v10h-10z"/></svg>
-                    Mes dernières<br>vidéos
+                    vidéos
                 </span>
             </h1>
         </div>
@@ -18,11 +18,15 @@
         <section class="mt-16">
             <div class="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
                 {% for video in youtubeVideos %}
+                    {% set publishedAtDate = video.publishedAt|date('Y-m-d\\TH:i:s\\Z') %}
                     <article>
-                        <div class="relative">
+                        <div class="relative overflow-hidden">
                             <img class="w-full rounded" src="{{ video.thumbnail }}" alt="{{ video.title }}">
-                            <div class="cursor-pointer rounded absolute inset-x-0 inset-y-0 flex w-full items-center justify-center transition duration-300 group hover:bg-red-500/75" data-modalpreview="modal-preview" data-video="{{ video.id }}">
-                                <svg class="h-32 w-32 opacity-0 transition duration-300 group-hover:opacity-100 fill-white" viewBox="0 0 24 24"><path d="m9.5 16.5 7-4.5-7-4.5v9ZM12 22q-2.08 0-3.9-.79t-3.17-2.14q-1.35-1.35-2.14-3.17T2 12q0-2.08.79-3.9t2.14-3.17Q6.28 3.57 8.1 2.78T12 2q2.08 0 3.9.79t3.17 2.14q1.35 1.35 2.14 3.17T22 12q0 2.08-.79 3.9t-2.14 3.17q-1.35 1.35-3.17 2.14T12 22Zm0-2q3.35 0 5.67-2.33T20 12q0-3.35-2.33-5.67T12 4Q8.65 4 6.33 6.33T4 12q0 3.35 2.33 5.67T12 20Zm0-8Z"/></svg>
+                            {% if publishedAtDate|date('Y-m-d') >= date('-1 week')|date('Y-m-d') %}
+                                <div class="absolute top-4 right-4 rounded px-2 py-1 font-bold text-lg text-white shadow bg-coral-red-600">Nouveau !</div>
+                            {% endif %}
+                            <div class="absolute inset-x-0 inset-y-0 flex w-full cursor-pointer items-center justify-center rounded transition duration-300 group hover:bg-red-500/75" data-modalpreview="modal-preview" data-video="{{ video.id }}">
+                                <svg class="h-32 w-32 fill-white opacity-0 transition duration-300 group-hover:opacity-100" viewBox="0 0 24 24"><path d="m9.5 16.5 7-4.5-7-4.5v9ZM12 22q-2.08 0-3.9-.79t-3.17-2.14q-1.35-1.35-2.14-3.17T2 12q0-2.08.79-3.9t2.14-3.17Q6.28 3.57 8.1 2.78T12 2q2.08 0 3.9.79t3.17 2.14q1.35 1.35 2.14 3.17T22 12q0 2.08-.79 3.9t-2.14 3.17q-1.35 1.35-3.17 2.14T12 22Zm0-2q3.35 0 5.67-2.33T20 12q0-3.35-2.33-5.67T12 4Q8.65 4 6.33 6.33T4 12q0 3.35 2.33 5.67T12 20Zm0-8Z"/></svg>
                             </div>
                         </div>
                         <div class="mt-1 flex flex-col gap-4">
@@ -34,11 +38,16 @@
                 {% endfor %}
             </div>
 
+            {% if settings.youtubeChannel %}
             <div class="mt-16 flex justify-center">
-                <a href="{{settings.youtubeChannel}}" target="_blank" rel="noreferrer nofollow noopener">
-                    <button class="max-w-fit self-center px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">Voir plus de vidéos</button>
+                <a href="{{ settings.youtubeChannel }}" target="_blank" rel="noreferrer nofollow noopener">
+                    <button class="flex max-w-fit gap-2 self-center px-6 text-center font-bold uppercase text-white transition bg-coral-red-500 py-3.5 hover:bg-coral-red-700">
+                        <span>Voir plus de vidéos</span>
+                        <svg class="w-5" viewBox="0 0 24 24"><path fill="currentColor" d="M14 3v2h3.59l-9.83 9.83l1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg>
+                    </button>
                 </a>
             </div>
+            {% endif %}
         </section>
 
         <div aria-hidden="true" class="invisible fixed top-0 left-0 z-20 flex h-screen w-screen flex-col items-center justify-center opacity-0 transition duration-500" id="modal-preview">

@@ -7,12 +7,6 @@
 <fieldset class="flex gap-4 p-2 flex-wrap sm:flex-nowrap justify-between border border-slate-400 rounded">
     <legend class="px-2 font-semibold">Informations générales</legend>
     <div class="flex flex-col gap-2 w-full">
-        {{ form_label(form.twitchChannel) }}
-        {{ form_widget(form.twitchChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
-        {{ form_errors(form.twitchChannel) }}
-    </div>
-
-    <div class="flex flex-col gap-2 w-full">
         {{ form_label(form.youtubeChannel) }}
         {{ form_widget(form.youtubeChannel, {'attr': {'class': 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
         {{ form_errors(form.youtubeChannel) }}

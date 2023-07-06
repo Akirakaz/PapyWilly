@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/profile')]
 class UserController extends AbstractController
 {
-    #[Route('/', name: 'app_admin_user_index', methods: ['GET', 'POST'])]
+    #[Route('/', name: 'app_admin_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = $userRepository->findOneBy(['id' => $this->getUser()]);
@@ -35,7 +35,7 @@ class UserController extends AbstractController
 
             $this->addFlash('info', 'Vos informations ont bien été mises à jour.');
 
-            return $this->redirectToRoute('app_admin_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_user_edit', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/user/edit.html.twig', [

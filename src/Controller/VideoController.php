@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
+use App\Enums\CacheExpirationEnums;
 use App\Repository\SettingsRepository;
-use DateInterval;
+use App\Service\CacheSystem;
 use Doctrine\ORM\NonUniqueResultException;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\YoutubeAPIService;
@@ -20,29 +20,40 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 class VideoController extends AbstractController
 {
     /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
      * @throws InvalidArgumentException
      * @throws RedirectionExceptionInterface
      * @throws DecodingExceptionInterface
      * @throws ClientExceptionInterface
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
      * @throws NonUniqueResultException
      */
     #[Route('/videos', name: 'app_videos')]
-    public function index(YoutubeAPIService $youtubeAPIService, SettingsRepository $settingsRepository): Response
+    public function index(
+        CacheSystem        $cacheSystem,
+        YoutubeAPIService  $youtubeAPIService,
+        SettingsRepository $settingsRepository
+    ): Response
     {
-        $cache = new FilesystemAdapter();
-        $youtubeVideos = $cache->getItem('youtube_videos');
+        if (!$cacheSystem->isHit('youtube_videos')) {
+            $cacheSystem->setCache(
+                'youtube_videos',
+                $youtubeAPIService->getLatestVideos(),
+                CacheExpirationEnums::HOURS_6
+            );
+        }
 
-        if (!$youtubeVideos->isHit()) {
-            $youtubeVideos->set($youtubeAPIService->getLatestVideos());
-            $youtubeVideos->expiresAfter(new DateInterval('PT1H'));
-            $cache->save($youtubeVideos);
+        if (!$cacheSystem->isHit('settings')) {
+            $cacheSystem->setCache(
+                'settings',
+                $settingsRepository->getSettings(),
+                CacheExpirationEnums::HOURS_6
+            );
         }
 
         return $this->render('public/video/index.html.twig', [
-            'youtubeVideos' => $youtubeVideos->get(),
-            'settings' => $settingsRepository->getSettings(),
+            'youtubeVideos' => $cacheSystem->getCache('youtube_videos'),
+            'settings'      => $cacheSystem->getCache('settings'),
         ]);
     }
 }

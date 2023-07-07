@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Entity\SocialNetwork;
+use App\Service\CacheSystem;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\ORM\Event\PostPersistEventArgs;
 use Doctrine\ORM\Event\PostRemoveEventArgs;
@@ -16,11 +17,11 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 #[AsDoctrineListener(event: Events::postRemove, priority: 500, connection: 'default')]
 class SocialNetworkSubscriber
 {
-    private FilesystemAdapter $cache;
+    private CacheSystem $cacheSystem;
 
-    public function __construct()
+    public function __construct(CacheSystem $cacheSystem)
     {
-        $this->cache = new FilesystemAdapter();
+        $this->cacheSystem = $cacheSystem;
     }
 
     /**
@@ -56,6 +57,6 @@ class SocialNetworkSubscriber
             return;
         }
 
-        $this->cache->delete('socialNetworks');
+        $this->cacheSystem->deleteCache('social_networks');
     }
 }

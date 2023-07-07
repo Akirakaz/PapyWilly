@@ -2,16 +2,16 @@
 
 namespace App\Controller;
 
+use App\Enums\CacheExpirationEnums;
+use App\Service\CacheSystem;
 use App\Service\TwitchAPIService;
 use App\Service\TwitchScheduleService;
-use DateInterval;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class StreamController extends AbstractController
 {
@@ -21,23 +21,24 @@ class StreamController extends AbstractController
      * @throws InvalidArgumentException
      */
     #[Route('/stream', name: 'app_stream')]
-    public function index(TwitchScheduleService $twitchSchedule, TwitchAPIService $twitchAPI): Response
+    public function index(
+        CacheSystem $cacheSystem,
+        TwitchScheduleService $twitchSchedule,
+        TwitchAPIService $twitchAPI): Response
     {
-        $cache = new FilesystemAdapter();
-        $streamSchedule = $cache->getItem('stream_schedule');
-
-        if (!$streamSchedule->isHit()) {
-            $streamSchedule->set($twitchAPI->getSchedule());
-            $streamSchedule->expiresAfter(new DateInterval('PT1H'));
-            $cache->save($streamSchedule);
+        if (!$cacheSystem->isHit('stream_schedule')) {
+            $cacheSystem->setCache(
+                'stream_schedule',
+                $twitchAPI->getSchedule(),
+                CacheExpirationEnums::HOURS_12
+            );
         }
 
-        $data = $streamSchedule->get();
+        $data = $cacheSystem->getCache('stream_schedule');
 
         $renderSchedule = $twitchSchedule->render($data);
 
         return $this->render('public/stream/index.html.twig', [
-
             'schedule'      => $renderSchedule['schedule'],
             'scheduleWeek'  => [
                 'start' => $renderSchedule['scheduleWeek']['start'],
